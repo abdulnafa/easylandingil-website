@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easy Landing – About</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: inherit; background: #0d1528; color: #1a2744; }
+
+/* ── NAV ── */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 60px; background: #0d1528;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { font-size: 20px; letter-spacing: 3px; color: #fff; font-weight: 700; text-transform: uppercase; text-decoration: none; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover { color: rgba(255,255,255,0.9); }
+.nav-links a.active { color: #fff; }
+.nav-cta { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 12px 26px; background: #fff; color: #0d1528; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+.nav-cta:hover { background: rgba(255,255,255,0.88); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 88vh;
+  background: #0d1528;
+  display: grid; grid-template-columns: 1fr 1fr;
+  position: relative; overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 90px 80px; z-index: 2;
+}
+.hero-right { position: relative; overflow: hidden; }
+.hero-img {
+  position: absolute; inset: 0;
+  background-image: url('https://easylandingil.com/wp-content/uploads/2021/05/gfsgs.jpg');
+  background-size: cover; background-position: center top;
+  opacity: 0.38;
+}
+.hero-right::before {
+  content: ''; position: absolute; inset: 0; left: -1px;
+  background: linear-gradient(90deg, #0d1528 0%, transparent 60%);
+  z-index: 2;
+}
+.hero-right::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(13,21,40,0.25); z-index: 1;
+}
+.hero-tag {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.28); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-tag::before { content: ''; width: 32px; height: 1px; background: rgba(255,255,255,0.18); }
+.hero-left h1 { font-size: 68px; font-weight: 700; color: white; line-height: 1.06; margin-bottom: 10px; }
+.hero-left h1 em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.25); display: block; font-size: 56px; }
+.hero-divider { width: 50px; height: 1px; background: rgba(255,255,255,0.12); margin: 28px 0; }
+.hero-left p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.42); max-width: 480px; margin-bottom: 44px; }
+.hero-btns { display: flex; gap: 14px; align-items: center; }
+.btn-white { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; padding: 17px 44px; background: #fff; color: #0d1528; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+.btn-white:hover { background: rgba(255,255,255,0.88); }
+.btn-text { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.32); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 3px; }
+.btn-text:hover { color: rgba(255,255,255,0.65); }
+.hero-founded {
+  position: absolute; bottom: 48px; right: 48px; z-index: 5;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 22px 30px;
+}
+.hero-founded-year { font-size: 40px; font-weight: 700; color: white; line-height: 1; margin-bottom: 4px; }
+.hero-founded-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+
+/* ── INTRO STRIP ── */
+.intro-strip {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.strip-item { padding: 40px 48px; border-right: 1px solid rgba(255,255,255,0.05); display: flex; align-items: flex-start; gap: 16px; }
+.strip-item:last-child { border-right: none; }
+.strip-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.strip-item h4 { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.78); margin-bottom: 6px; }
+.strip-item p { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.33); }
+
+/* ── STORY ── */
+.story {
+  padding: 90px 80px;
+  background: #0d1528;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.eyebrow-light { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+.eyebrow-light::before { content: ''; width: 26px; height: 1px; background: rgba(255,255,255,0.18); }
+.eyebrow-dark { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: rgba(26,39,68,0.38); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+.eyebrow-dark::before { content: ''; width: 26px; height: 1px; background: rgba(26,39,68,0.2); }
+.story h2 { font-size: 44px; font-weight: 700; color: white; line-height: 1.15; margin-bottom: 24px; margin-top: 14px; }
+.story p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.42); margin-bottom: 16px; }
+.story p:last-child { margin-bottom: 0; }
+.story-right { display: flex; flex-direction: column; gap: 2px; }
+.story-point {
+  background: rgba(255,255,255,0.03); padding: 26px 30px;
+  display: flex; align-items: flex-start; gap: 18px;
+  border-left: 2px solid rgba(255,255,255,0.05);
+  transition: all 0.3s;
+}
+.story-point:hover { background: rgba(255,255,255,0.07); border-left-color: rgba(255,255,255,0.25); }
+.story-point-icon { font-size: 22px; flex-shrink: 0; }
+.story-point h4 { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 5px; }
+.story-point p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.35); margin: 0; }
+
+/* ── TEAM ── */
+.team { padding: 90px 80px; background: #0d1528; }
+.team h2 { font-size: 46px; font-weight: 700; color: white; margin-bottom: 56px; margin-top: 14px; }
+
+.team-feature {
+  display: grid; grid-template-columns: 340px 1fr;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden; margin-bottom: 20px;
+}
+.team-photo {
+  position: relative; overflow: hidden; min-height: 420px;
+  background: #1a2744;
+}
+.team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; opacity: 0.7; display: block; }
+.team-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(13,21,40,0.1), rgba(13,21,40,0.3)); }
+.team-photo-name {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(13,21,40,0.9), transparent);
+  padding: 40px 32px 28px;
+}
+.team-photo-name h3 { font-size: 22px; font-weight: 700; color: white; margin-bottom: 4px; }
+.team-photo-name span { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+.team-bio { padding: 52px 56px; display: flex; flex-direction: column; justify-content: center; }
+.team-bio p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.42); margin-bottom: 16px; }
+.team-bio p:last-of-type { margin-bottom: 0; }
+.team-qualities { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 36px; }
+.quality {
+  background: rgba(255,255,255,0.03); padding: 18px 22px;
+  border-left: 2px solid rgba(255,255,255,0.07);
+  font-size: 12px; color: rgba(255,255,255,0.45);
+  transition: all 0.3s;
+}
+.quality:hover { background: rgba(255,255,255,0.06); border-left-color: rgba(255,255,255,0.2); }
+.quality strong { display: block; font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 3px; }
+
+/* ── VALUES ── */
+.values { padding: 0 80px 90px; background: #0d1528; }
+.values h2 { font-size: 46px; font-weight: 700; color: white; margin-bottom: 36px; margin-top: 14px; }
+.values-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+.value-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.05);
+  padding: 40px 32px; transition: all 0.35s; cursor: default;
+}
+.value-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.1); }
+.value-icon { font-size: 30px; margin-bottom: 20px; display: block; }
+.value-card h4 { font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.82); margin-bottom: 10px; }
+.value-card p { font-size: 12px; line-height: 1.8; color: rgba(255,255,255,0.35); }
+
+/* ── MISSION BANNER ── */
+.mission {
+  margin: 0 80px 90px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  padding: 70px 80px;
+  text-align: center;
+}
+.mission blockquote {
+  font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.82);
+  line-height: 1.5; max-width: 800px; margin: 0 auto 28px;
+  font-style: italic;
+}
+.mission blockquote em { color: rgba(255,255,255,0.28); font-weight: 300; }
+.mission cite { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.28); }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: white; padding: 80px;
+  display: flex; justify-content: space-between; align-items: center; gap: 40px;
+}
+.cta-banner h2 { font-size: 44px; font-weight: 700; color: #1a2744; line-height: 1.2; max-width: 520px; }
+.cta-banner h2 span { color: rgba(26,39,68,0.25); font-weight: 300; }
+.cta-actions { display: flex; flex-direction: column; gap: 14px; align-items: flex-end; }
+.btn-navy { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; padding: 17px 44px; background: #1a2744; color: #fff; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+.btn-navy:hover { background: #0d1528; }
+.link-small { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(26,39,68,0.35); text-decoration: none; border-bottom: 1px solid rgba(26,39,68,0.15); padding-bottom: 3px; }
+
+/* ── FOOTER ── */
+footer { background: #080e1c; padding: 64px 80px 36px; }
+.footer-top {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 52px; padding-bottom: 52px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-brand-name { font-size: 18px; font-weight: 700; color: white; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+.footer-brand p { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.3); max-width: 260px; }
+.footer-col h4 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.32); text-decoration: none; margin-bottom: 11px; transition: color 0.3s; }
+.footer-col a:hover { color: rgba(255,255,255,0.75); }
+.footer-bottom { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.18); }
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
+  .nav-links { display: none; }
+  .nav-logo { font-size: 16px; }
+  .nav-cta { padding: 10px 18px; font-size: 9px; }
+
+  /* Hero sections */
+  .hero, .page-hero { min-height: auto !important; grid-template-columns: 1fr !important; }
+  .hero-left, .hero-content { padding: 52px 24px 40px !important; }
+  .hero-left h1, .page-hero h1 { font-size: 38px !important; }
+  .hero-left h1 em { font-size: 32px !important; }
+  .hero-right { display: none !important; }
+  .hero-btns { flex-direction: column; gap: 12px; }
+  .btn-white, .btn-navy, .btn-text { width: 100%; text-align: center; }
+
+  /* Intro strips */
+  .intro-strip, .intro, .promise-strip { grid-template-columns: 1fr !important; }
+  .strip-item, .intro-item, .promise-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 28px 24px !important; }
+
+  /* Service rows */
+  .service-row, .svc-row { grid-template-columns: 1fr !important; padding: 24px !important; gap: 12px !important; }
+  .sr-num, .svc-icon-lg { display: none; }
+
+  /* Cards and grids */
+  .cards, .types-grid, .type-grid, .prop-grid, .values-grid, .svc-grid,
+  .testimonial-grid, .process-steps, .process-grid, .team-qualities,
+  .extra-list { grid-template-columns: 1fr !important; }
+
+  /* Two-column sections */
+  .intro-strip, .why-israel, .properties-cta, .guarantee, .extras,
+  .prop-left, .story, .team-feature, .cta-banner, .services-links .svc-grid,
+  .why-israel, .intro { grid-template-columns: 1fr !important; flex-direction: column !important; }
+
+  .team-feature { flex-direction: column; }
+  .team-photo { min-height: 280px !important; }
+
+  /* Padding fixes */
+  .packages, .services, .process, .testimonials, .invest-types,
+  .prop-types, .extras, .guarantee, .properties-cta, .why-israel,
+  .cta-banner, .services-links, .story, .team, .values, .mission,
+  .how-we-work, .invest-types { padding: 52px 24px !important; margin: 0 !important; }
+
+  footer .footer-top { grid-template-columns: 1fr !important; gap: 32px; }
+  footer { padding: 40px 24px 24px !important; }
+
+  /* Text sizing */
+  h1 { font-size: 36px !important; }
+  h2 { font-size: 28px !important; }
+  .cta-banner h2 { font-size: 26px !important; max-width: 100% !important; }
+  .packages-header h2, .services h2, .team h2, .values h2 { font-size: 30px !important; }
+
+  /* Cards full width */
+  .card, .type-card, .prop-card, .value-card, .testimonial-card,
+  .step, .proc-card { width: 100% !important; }
+
+  /* Properties CTA */
+  .properties-cta { margin: 0 !important; }
+  .prop-left, .prop-right { padding: 40px 24px !important; }
+
+  /* Mission */
+  .mission { padding: 40px 24px !important; }
+  .mission blockquote { font-size: 18px !important; }
+
+  /* Contact form */
+  .main { grid-template-columns: 1fr !important; }
+  .info-panel, .form-panel { padding: 40px 24px !important; }
+  .form-row { grid-template-columns: 1fr !important; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/index.html" class="nav-logo">Easy Landing</a>
+  <ul class="nav-links">
+    <li><a href="/aliyah-services.html">Aliyah & Relocation</a></li>
+    <li><a href="/real-estate.html">Real Estate</a></li>
+    <li><a href="/property-management.html">Property Management</a></li>
+    <li><a href="/about.html" class="active">About</a></li>
+    <li><a href="/aliyah-services.html">Testimonials</a></li>
+  </ul>
+  <a href="/contact.html" class="nav-cta">Free Consultation</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">About Easy Landing · Est. 2018</div>
+    <h1>Your Bridge<br><em>to Israel.</em></h1>
+    <div class="hero-divider"></div>
+    <p>Easy Landing was founded with one mission: to give families and individuals everything they need to make Aliyah, invest, or relocate to Israel with confidence — backed by a team who has done it themselves.</p>
+    <div class="hero-btns">
+      <a href="/contact.html" class="btn-white">Get in Touch</a>
+      <a href="#team" class="btn-text">Meet Our Team →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img"></div>
+    <div class="hero-founded">
+      <div class="hero-founded-year">2018</div>
+      <div class="hero-founded-label">Est. Israel</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="strip-item">
+    <span class="strip-icon">👁️</span>
+    <div>
+      <h4>Your Eyes & Ears on the Ground</h4>
+      <p>We are your boots on the ground in Israel — always working to protect your interests, whatever it takes.</p>
+    </div>
+  </div>
+  <div class="strip-item">
+    <span class="strip-icon">🤝</span>
+    <div>
+      <h4>Olim Helping Olim</h4>
+      <p>Our team are Olim and Vatikim themselves — they know firsthand what you're going through and exactly how to help.</p>
+    </div>
+  </div>
+  <div class="strip-item">
+    <span class="strip-icon">🗣️</span>
+    <div>
+      <h4>English-Speaking Team</h4>
+      <p>Our fully English-speaking team gives you the peace of mind to navigate Israel with confidence and clarity.</p>
+    </div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story">
+  <div>
+    <div class="eyebrow-light">Our Story</div>
+    <h2>Why Easy Landing Exists</h2>
+    <p>David Hozainov founded Easy Landing to provide people planning to make Aliyah or relocate to Israel with a true one-stop-shop — a trusted source of reliable service providers that fit their individual needs.</p>
+    <p>David and his team know from personal experience how hard it is to buy a house, negotiate with banks, find the right schools for your kids, or deal with government agencies in Israel. That's exactly why Easy Landing was born.</p>
+    <p>With Easy Landing, clients across the globe save time and money, allowing them to focus on what truly matters — their Aliyah, their family, and their new life in Israel.</p>
+  </div>
+  <div class="story-right">
+    <div class="story-point">
+      <span class="story-point-icon">🏠</span>
+      <div>
+        <h4>Finding a Home</h4>
+        <p>We help clients find the right place to settle — navigating the Israeli real estate market on your behalf.</p>
+      </div>
+    </div>
+    <div class="story-point">
+      <span class="story-point-icon">🏦</span>
+      <div>
+        <h4>Banking & Finance</h4>
+        <p>Negotiating with Israeli banks and financial institutions — cross-border taxation, insurance, and more.</p>
+      </div>
+    </div>
+    <div class="story-point">
+      <span class="story-point-icon">🎓</span>
+      <div>
+        <h4>Schools & Healthcare</h4>
+        <p>Selecting the right schools for your children and registering with Israeli health care providers.</p>
+      </div>
+    </div>
+    <div class="story-point">
+      <span class="story-point-icon">🏛️</span>
+      <div>
+        <h4>Government & Bureaucracy</h4>
+        <p>Accompanying you to Misrad Hapnim, Ministry of Aliyah, and all government offices — we speak on your behalf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="eyebrow-light">The People Behind Easy Landing</div>
+  <h2>Meet Your Advisors</h2>
+
+  <div class="team-feature">
+    <div class="team-photo">
+      <img src="https://easylandingil.com/wp-content/uploads/2021/05/gfsgs.jpg" alt="David Hozainov">
+      <div class="team-photo-overlay"></div>
+      <div class="team-photo-name">
+        <h3>David Hozainov</h3>
+        <span>Managing Director & Founder</span>
+      </div>
+    </div>
+    <div class="team-bio">
+      <div class="eyebrow-light" style="margin-bottom:12px;">Managing Director & Founder</div>
+      <p>David founded Easy Landing with a single mission: to make the journey to Israel as smooth, simple, and stress-free as possible for every family and individual he serves.</p>
+      <p>With the aim of providing top-notch service and assisting as many households as possible, David has made Easy Landing accessible during most hours of the day. His commitment to ensuring client satisfaction is unwavering — working tirelessly around the clock.</p>
+      <p>As an Oleh himself, David brings firsthand understanding of every challenge his clients face, and genuine passion for helping them build their lives in Israel.</p>
+      <div class="team-qualities">
+        <div class="quality"><strong>Oleh Himself</strong>Personal Aliyah experience</div>
+        <div class="quality"><strong>Always Available</strong>Around-the-clock support</div>
+        <div class="quality"><strong>Client-First</strong>Your interests, always protected</div>
+        <div class="quality"><strong>Trusted Network</strong>Israel's finest professionals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <div class="team-feature">
+    <div class="team-photo">
+      <img src="https://easylandingil.com/wp-content/uploads/2025/10/2680B8F0-0FC4-48A7-8363-39F0BBA0BD7B-2.jpeg" alt="Rafi Klein">
+      <div class="team-photo-overlay"></div>
+      <div class="team-photo-name">
+        <h3>Rafi Klein</h3>
+        <span>Founder of The Klein Group · Director of Operations (IL)</span>
+      </div>
+    </div>
+    <div class="team-bio">
+      <div class="eyebrow-light" style="margin-bottom:12px;">Founder of The Klein Group · Director of Operations (IL)</div>
+      <p>Rafi Klein is a core member of the Easy Landing team, bringing deep expertise and firsthand experience of life in Israel to every client relationship he manages.</p>
+      <p>As an Oleh and Vatik himself, Rafi understands the unique challenges that come with relocating to Israel — from navigating government bureaucracy to finding the right community, schools, and services for your family.</p>
+      <p>Rafi works closely with clients throughout their Aliyah journey and beyond, providing trusted guidance and hands-on support at every stage of the process.</p>
+      <div class="team-qualities">
+        <div class="quality"><strong>Oleh & Vatik</strong>Deep personal experience</div>
+        <div class="quality"><strong>Client Advocate</strong>Your representative in Israel</div>
+        <div class="quality"><strong>Hands-On Support</strong>With you every step</div>
+        <div class="quality"><strong>Trusted Advisor</strong>Expert local knowledge</div>
+      </div>
+    </div>
+  </div>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="eyebrow-light">What Drives Us</div>
+  <h2>Our Values</h2>
+  <div class="values-grid">
+    <div class="value-card">
+      <span class="value-icon">🛡️</span>
+      <h4>Protection First</h4>
+      <p>We are your advocates. We always make sure to protect your interests — in every meeting, every decision, every outcome.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-icon">💎</span>
+      <h4>White Glove Service</h4>
+      <p>We don't just do our job — we go the extra mile. Every client receives premium, personalized attention from start to finish.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-icon">🔍</span>
+      <h4>Transparency</h4>
+      <p>Clear communication, honest pricing, and no surprises. You always know exactly what we're doing and why.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-icon">❤️</span>
+      <h4>We've Been There</h4>
+      <p>Our team are Olim themselves. We bring empathy, lived experience, and genuine care to every client relationship.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION BANNER -->
+<div class="mission">
+  <blockquote>
+    "We are your eyes and ears — <em>your boots on the ground in Israel.</em> We always make sure to protect your interests."
+  </blockquote>
+  <cite>— David Hozainov, Founder & Managing Director</cite>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Start Your <span>Israel Journey?</span></h2>
+  <div class="cta-actions">
+    <a href="/contact.html" class="btn-navy">Book a Free Consultation</a>
+    <a href="/aliyah-services.html" class="link-small">Read client testimonials →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Easy Landing</div>
+      <p>Concierge bureaucracy services in Israel. Turning problems into solutions for Aliyah and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="/aliyah-services.html">Aliyah & Relocation</a>
+      <a href="/real-estate.html">Real Estate</a>
+      <a href="/property-management.html">Property Management</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about.html">About</a>
+      <a href="/aliyah-services.html">Testimonials</a>
+      <a href="https://easylandingil.com/blog/">News</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <a href="tel:+16468329712">+1 (646) 832-9712</a>
+      <a href="/cdn-cgi/l/email-protection#a5e1c4d3ccc1e5e0c4d6dce9c4cbc1cccbc28bcccbc3ca"><span class="__cf_email__" data-cfemail="246045524d40646145575d68454a404d4a430a4d4a424b">[email&#160;protected]</span></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>�

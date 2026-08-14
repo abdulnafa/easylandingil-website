@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easy Landing – Home</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: inherit; background: #ffffff; color: #1a2744; }
+
+/* ── NAV ── */
+nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 60px;
+}
+.nav-logo {
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: #ffffff; }
+.nav-cta {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 12px 26px;
+  background: #ffffff;
+  color: #1a2744;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: rgba(255,255,255,0.88); }
+
+/* ── VIDEO HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10,18,40,0.95) 0%,
+    rgba(10,18,40,0.5) 50%,
+    rgba(10,18,40,0.25) 100%
+  );
+}
+.hero-text {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 5;
+  padding: 0 80px 90px;
+}
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.25);
+}
+.hero-text h1 {
+  font-size: 74px;
+  font-weight: 700;
+  line-height: 1.06;
+  color: #ffffff;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+}
+.hero-text h1 span {
+  display: block;
+  font-size: 60px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+}
+.hero-sub {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.55);
+  max-width: 500px;
+  margin-bottom: 42px;
+}
+.hero-actions { display: flex; gap: 14px; }
+.btn-white {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 17px 44px;
+  background: #ffffff;
+  color: #1a2744;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.3s;
+}
+.btn-white:hover { background: rgba(255,255,255,0.88); }
+.btn-ghost {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 17px 44px;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.6); color: white; }
+
+/* Video play/pause */
+.video-control {
+  position: absolute;
+  bottom: 30px;
+  right: 60px;
+  z-index: 6;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.video-control:hover { background: rgba(255,255,255,0.1); color: white; }
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 80px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.25);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  animation: scrollMove 2s ease-in-out infinite;
+}
+@keyframes scrollMove {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+
+
+/* ── SERVICES ── */
+.services {
+  padding: 100px 80px;
+  background: #f4f6fb;
+}
+.section-eyebrow {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(26,39,68,0.4);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: rgba(26,39,68,0.3);
+}
+.services-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 54px;
+}
+.services-top h2 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a2744;
+  line-height: 1.15;
+}
+.services-top a {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #1a2744;
+  text-decoration: none;
+  opacity: 0.45;
+  border-bottom: 1px solid rgba(26,39,68,0.25);
+  padding-bottom: 4px;
+}
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.service-card {
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(26,39,68,0.07);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 50px rgba(26,39,68,0.13);
+}
+.card-img {
+  height: 210px;
+  background: #1a2744;
+  overflow: hidden;
+  position: relative;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  transition: opacity 0.3s, transform 0.5s;
+}
+.service-card:hover .card-img img {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+.card-num {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.3);
+}
+.card-body { padding: 30px 28px; }
+.card-body h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2744;
+  margin-bottom: 12px;
+}
+.card-body p {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #6a7690;
+  margin-bottom: 22px;
+}
+.card-link {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #1a2744;
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 1px solid #1a2744;
+  padding-bottom: 3px;
+}
+
+/* ── ABOUT ── */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+.about-left {
+  background: #1a2744;
+  padding: 90px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about-left .section-eyebrow { color: rgba(255,255,255,0.3); }
+.about-left .section-eyebrow::before { background: rgba(255,255,255,0.2); }
+.about-left h2 {
+  font-size: 44px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+.about-left p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 38px;
+}
+.about-right {
+  background: white;
+  padding: 90px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 28px 0;
+  border-bottom: 1px solid #e8edf5;
+}
+.team-member:first-child { padding-top: 0; }
+.team-member:last-child { border-bottom: none; padding-bottom: 0; }
+.team-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #e8edf5;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid #e8edf5;
+}
+.team-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.team-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2744;
+  margin-bottom: 5px;
+}
+.team-role {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #8a96b0;
+  line-height: 1.5;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  padding: 100px 80px;
+  background: #f4f6fb;
+}
+.testimonials-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 54px;
+}
+.testimonials-top h2 {
+  font-size: 46px;
+  font-weight: 700;
+  color: #1a2744;
+}
+.testimonials-top a {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #1a2744;
+  text-decoration: none;
+  opacity: 0.45;
+  border-bottom: 1px solid rgba(26,39,68,0.25);
+  padding-bottom: 4px;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.testimonial-card {
+  background: white;
+  padding: 38px 32px 32px;
+  box-shadow: 0 2px 20px rgba(26,39,68,0.06);
+  position: relative;
+}
+.quote-mark {
+  font-size: 72px;
+  color: #e8edf5;
+  line-height: 1;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+}
+.testimonial-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #4a5570;
+  margin-bottom: 26px;
+}
+.testimonial-author {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #1a2744;
+  font-weight: 700;
+}
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: #1a2744;
+  padding: 90px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+.cta-banner h2 {
+  font-size: 44px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  max-width: 520px;
+}
+.cta-banner h2 span { color: rgba(255,255,255,0.3); font-weight: 300; }
+
+/* ── FOOTER ── */
+footer {
+  background: #111c33;
+  padding: 64px 80px 36px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 52px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.footer-brand p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.4);
+  max-width: 260px;
+}
+.footer-col h4 {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 20px;
+}
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  margin-bottom: 11px;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: rgba(255,255,255,0.85); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+}
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
+  .nav-links { display: none; }
+  .nav-logo { font-size: 16px; }
+  .nav-cta { padding: 10px 18px; font-size: 9px; }
+
+  /* Hero sections */
+  .hero, .page-hero { min-height: auto !important; grid-template-columns: 1fr !important; }
+  .hero-left, .hero-content { padding: 52px 24px 40px !important; }
+  .hero-left h1, .page-hero h1 { font-size: 38px !important; }
+  .hero-left h1 em { font-size: 32px !important; }
+  .hero-right { display: none !important; }
+  .hero-btns { flex-direction: column; gap: 12px; }
+  .btn-white, .btn-navy, .btn-text { width: 100%; text-align: center; }
+
+  /* Intro strips */
+  .intro-strip, .intro, .promise-strip { grid-template-columns: 1fr !important; }
+  .strip-item, .intro-item, .promise-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 28px 24px !important; }
+
+  /* Service rows */
+  .service-row, .svc-row { grid-template-columns: 1fr !important; padding: 24px !important; gap: 12px !important; }
+  .sr-num, .svc-icon-lg { display: none; }
+
+  /* Cards and grids */
+  .cards, .types-grid, .type-grid, .prop-grid, .values-grid, .svc-grid,
+  .testimonial-grid, .process-steps, .process-grid, .team-qualities,
+  .extra-list { grid-template-columns: 1fr !important; }
+
+  /* Two-column sections */
+  .intro-strip, .why-israel, .properties-cta, .guarantee, .extras,
+  .prop-left, .story, .team-feature, .cta-banner, .services-links .svc-grid,
+  .why-israel, .intro { grid-template-columns: 1fr !important; flex-direction: column !important; }
+
+  .team-feature { flex-direction: column; }
+  .team-photo { min-height: 280px !important; }
+
+  /* Padding fixes */
+  .packages, .services, .process, .testimonials, .invest-types,
+  .prop-types, .extras, .guarantee, .properties-cta, .why-israel,
+  .cta-banner, .services-links, .story, .team, .values, .mission,
+  .how-we-work, .invest-types { padding: 52px 24px !important; margin: 0 !important; }
+
+  footer .footer-top { grid-template-columns: 1fr !important; gap: 32px; }
+  footer { padding: 40px 24px 24px !important; }
+
+  /* Text sizing */
+  h1 { font-size: 36px !important; }
+  h2 { font-size: 28px !important; }
+  .cta-banner h2 { font-size: 26px !important; max-width: 100% !important; }
+  .packages-header h2, .services h2, .team h2, .values h2 { font-size: 30px !important; }
+
+  /* Cards full width */
+  .card, .type-card, .prop-card, .value-card, .testimonial-card,
+  .step, .proc-card { width: 100% !important; }
+
+  /* Properties CTA */
+  .properties-cta { margin: 0 !important; }
+  .prop-left, .prop-right { padding: 40px 24px !important; }
+
+  /* Mission */
+  .mission { padding: 40px 24px !important; }
+  .mission blockquote { font-size: 18px !important; }
+
+  /* Contact form */
+  .main { grid-template-columns: 1fr !important; }
+  .info-panel, .form-panel { padding: 40px 24px !important; }
+  .form-row { grid-template-columns: 1fr !important; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Easy Landing</div>
+  <ul class="nav-links">
+    <li><a href="/aliyah-services.html">Aliyah & Relocation</a></li>
+    <li><a href="/real-estate.html">Real Estate</a></li>
+    <li><a href="/property-management.html">Property Management</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/aliyah-services.html">Testimonials</a></li>
+  </ul>
+  <a href="/contact.html" class="nav-cta">Free Consultation</a>
+</nav>
+
+<!-- VIDEO HERO -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
+    <source src="https://easylandingil.com/wp-content/uploads/2022/08/EL-GideonEdits4.mov" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">Concierge Services · Israel</div>
+    <h1>
+      <span>The Bridge Between</span>
+      The World & Israel.
+    </h1>
+    <p class="hero-sub">Easy Landing provides premium concierge bureaucracy services in Israel. We turn problems into solutions — for Aliyah and beyond.</p>
+    <div class="hero-actions">
+      <a href="/contact.html" class="btn-white">Begin Your Journey</a>
+      <a href="/aliyah-services.html" class="btn-ghost">Our Services</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+  <button class="video-control" onclick="toggleVideo()" id="videoBtn">⏸</button>
+</section>
+
+
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="services-top">
+    <div>
+      <div class="section-eyebrow">What We Do</div>
+      <h2>Our Services</h2>
+    </div>
+    <a href="/aliyah-services.html">View All →</a>
+  </div>
+  <div class="service-cards">
+    <div class="service-card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1609234656432-603f42cf14a9?w=800https://easylandingil.com/wp-content/uploads/2022/08/AdobeStock_69957207-scaled-e1659933953879.jpegq=80" alt="Aliyah Services">
+        <div class="card-num">01</div>
+      </div>
+      <div class="card-body">
+        <h3>Aliyah & Relocation</h3>
+        <p>Experience a seamless Aliyah process with comprehensive support at every step. Trust, honesty, and excellent service from start to finish.</p>
+        <a href="/aliyah-services.html" class="card-link">Read More</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800https://easylandingil.com/wp-content/uploads/2022/08/AdobeStock_220676674-scaled.jpegq=80" alt="Real Estate">
+        <div class="card-num">02</div>
+      </div>
+      <div class="card-body">
+        <h3>Real Estate Investment</h3>
+        <p>From dream homes to investment apartments — we guide you through Israel's property market with insider expertise and white-glove service.</p>
+        <a href="/real-estate.html" class="card-link">View Properties</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800https://easylandingil.com/wp-content/uploads/2022/08/AdobeStock_335776411-scaled.jpegq=80" alt="Property Management">
+        <div class="card-num">03</div>
+      </div>
+      <div class="card-body">
+        <h3>Property Management</h3>
+        <p>We care for your property as if it were our own — complete management services backed by our personal guarantee of quality.</p>
+        <a href="/property-management.html" class="card-link">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / TEAM -->
+<section class="about">
+  <div class="about-left">
+    <div class="section-eyebrow">Our Team</div>
+    <h2>Your Eyes & Ears on the Ground</h2>
+    <p>We know from personal experience how time-consuming Israeli bureaucracy can be. We provide exclusive, high-end guidance to best meet your requirements with trustworthy customer support — whether you're making Aliyah or investing in Israeli real estate.</p>
+    <a href="/about.html" class="btn-white" style="display:inline-block;width:fit-content;">Meet the Team</a>
+  </div>
+  <div class="about-right">
+    <div class="team-member">
+      <div class="team-avatar">
+        <img src="https://easylandingil.com/wp-content/uploads/2021/05/gfsgs.jpg" alt="David Hozainov">
+      </div>
+      <div>
+        <div class="team-name">David Hozainov</div>
+        <div class="team-role">Managing Director</div>
+      </div>
+    </div>
+    <div class="team-member">
+      <div class="team-avatar">
+        <img src="https://easylandingil.com/wp-content/uploads/2025/10/2680B8F0-0FC4-48A7-8363-39F0BBA0BD7B-2.jpeg" alt="Rafi Klein">
+      </div>
+      <div>
+        <div class="team-name">Rafi Klein</div>
+        <div class="team-role">Founder, The Klein Group<br>Director of Operations (IL)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-top">
+    <div>
+      <div class="section-eyebrow">Client Stories</div>
+      <h2>Words from Our Clients</h2>
+    </div>
+    <a href="/aliyah-services.html">Read All Testimonials →</a>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">My experience with David and Gideon of Easy Landing was flawless! They arranged the necessary appointment, met me at the site, advocated effectively, and guided me through the entire process.</p>
+      <div class="testimonial-author">Mark Friedman · Forest Hills, NY</div>
+    </div>
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Words cannot express how easy your company made our Aliyah process. From the moment we met, you came through on even more than what you offered my family.</p>
+      <div class="testimonial-author">David Dweck · Director, Camp Allsport</div>
+    </div>
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Thanks so much — everything is perfect. You and Gideon have been great, and we have told all our friends how helpful you have both been. See you in Israel soon!</p>
+      <div class="testimonial-author">Alan Weichselbaum · New Rochelle, NY</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Ready to Start Your <span>Israeli Journey?</span></h2>
+  <a href="/contact.html" class="btn-white">Get a Free Consultation</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Easy Landing</div>
+      <p>Concierge bureaucracy services in Israel. Turning problems into solutions for Aliyah and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="/aliyah-services.html">Aliyah & Relocation</a>
+      <a href="/real-estate.html">Real Estate</a>
+      <a href="/property-management.html">Property Management</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about.html">About</a>
+      <a href="/aliyah-services.html">Testimonials</a>
+      <a href="https://easylandingil.com/blog/">News</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <a href="tel:+16468329712">+1 (646) 832-9712</a>
+      <a href="/cdn-cgi/l/email-protection#bdf9dccbd4d9fdf8dccec4f1dcd3d9d4d3da93d4d3dbd2"><span class="__cf_email__" data-cfemail="4e0a2f38272a0e0b2f3d37022f202a2720296027202821">[email&#160;protected]</span></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Easy Landing LLC. All rights reserved.</span>
+    <span>Website by BROEKMAN communications</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+let playing = true;
+function toggleVideo() {
+  c

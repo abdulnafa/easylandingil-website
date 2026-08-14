@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easy Landing – Aliyah & Relocation</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: inherit; background: #ffffff; color: #1a2744; }
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 60px;
+  background: #1a2744;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-logo { font-size: 20px; letter-spacing: 3px; color: #fff; font-weight: 700; text-transform: uppercase; text-decoration: none; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: #fff; }
+.nav-cta { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 12px 26px; background: #fff; color: #1a2744; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+.nav-cta:hover { background: rgba(255,255,255,0.88); }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: #1a2744;
+  padding: 90px 80px 80px;
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1548783300-b821baf34a73?w=1600https://easylandingil.com/wp-content/uploads/2022/09/iStock-641067732-scaled.jpegq=80');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+}
+.hero-divider {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1a2744, rgba(255,255,255,0.12), #1a2744);
+}
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
+.eyebrow {
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.38); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content: ''; width: 26px; height: 1px; background: rgba(255,255,255,0.25); }
+.page-hero h1 { font-size: 64px; font-weight: 700; color: #fff; line-height: 1.08; margin-bottom: 22px; }
+.page-hero p { font-size: 15px; line-height: 1.9; color: rgba(255,255,255,0.48); max-width: 580px; }
+
+/* ── INTRO STRIP ── */
+.intro-strip {
+  background: white;
+  padding: 64px 80px;
+  border-bottom: 1px solid #e8edf5;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.intro-strip h2 { font-size: 38px; font-weight: 700; color: #1a2744; line-height: 1.2; margin-bottom: 18px; }
+.intro-strip p { font-size: 14px; line-height: 1.9; color: #6a7690; margin-bottom: 14px; }
+.intro-points { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.intro-points li {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 14px; color: #4a5570; line-height: 1.6;
+}
+.intro-points li::before {
+  content: '✓';
+  background: #1a2744;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── PACKAGES ── */
+.packages {
+  padding: 90px 80px;
+  background: #f4f6fb;
+}
+.packages-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.packages-header .eyebrow { justify-content: center; }
+.packages-header .eyebrow::before { display: none; }
+.packages-header .eyebrow::after { content: ''; width: 26px; height: 1px; background: rgba(26,39,68,0.25); }
+.packages-header h2 { font-size: 46px; font-weight: 700; color: #1a2744; margin-bottom: 14px; }
+.packages-header p { font-size: 14px; line-height: 1.8; color: #6a7690; max-width: 560px; margin: 0 auto; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* Base card */
+.card {
+  background: white;
+  box-shadow: 0 2px 24px rgba(26,39,68,0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(26,39,68,0.13); }
+
+/* Featured card */
+.card.featured { background: #1a2744; }
+
+.card-header {
+  padding: 36px 32px 28px;
+  border-bottom: 1px solid #e8edf5;
+}
+.card.featured .card-header { border-bottom-color: rgba(255,255,255,0.08); }
+
+.card-tag {
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: #8a96b0; margin-bottom: 12px;
+}
+.card.featured .card-tag { color: rgba(255,255,255,0.35); }
+
+.card-badge {
+  display: inline-block;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+  padding: 4px 12px;
+  margin-bottom: 14px;
+}
+
+.card-header h3 { font-size: 22px; font-weight: 700; color: #1a2744; line-height: 1.25; margin-bottom: 12px; }
+.card.featured .card-header h3 { color: #fff; }
+
+.card-header p { font-size: 13px; line-height: 1.75; color: #6a7690; }
+.card.featured .card-header p { color: rgba(255,255,255,0.45); }
+
+.card-body { padding: 28px 32px; flex: 1; }
+.card-body ul { list-style: none; }
+.card-body li {
+  font-size: 13px; line-height: 1.6; color: #4a5570;
+  padding: 9px 0;
+  border-bottom: 1px solid #f0f2f8;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.card.featured .card-body li { color: rgba(255,255,255,0.55); border-bottom-color: rgba(255,255,255,0.07); }
+.card-body li:last-child { border-bottom: none; }
+.card-body li::before { content: '✓'; color: #1a2744; font-weight: 700; flex-shrink: 0; margin-top: 1px; font-size: 12px; }
+.card.featured .card-body li::before { color: rgba(255,255,255,0.4); }
+
+.card-footer { padding: 0 32px 36px; }
+.btn-outline {
+  display: block; text-align: center;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 16px; border: 1px solid #1a2744; color: #1a2744;
+  text-decoration: none; font-weight: 700; transition: all 0.3s;
+}
+.btn-outline:hover { background: #1a2744; color: white; }
+.btn-white-full {
+  display: block; text-align: center;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 16px; background: white; color: #1a2744;
+  text-decoration: none; font-weight: 700; transition: all 0.3s;
+}
+.btn-white-full:hover { background: rgba(255,255,255,0.88); }
+
+/* ── PROCESS SECTION ── */
+.process {
+  padding: 90px 80px;
+  background: white;
+}
+.process-header { margin-bottom: 56px; }
+.process-header h2 { font-size: 44px; font-weight: 700; color: #1a2744; margin-top: 14px; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: #e8edf5;
+}
+.step {
+  background: white;
+  padding: 44px 36px;
+  position: relative;
+}
+.step-num {
+  font-size: 56px; font-weight: 700;
+  color: rgba(26,39,68,0.06);
+  line-height: 1; margin-bottom: 20px;
+}
+.step h4 { font-size: 17px; font-weight: 700; color: #1a2744; margin-bottom: 10px; }
+.step p { font-size: 13px; line-height: 1.8; color: #6a7690; }
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  padding: 90px 80px;
+  background: #f4f6fb;
+}
+.testimonials-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 52px; }
+.testimonials-header h2 { font-size: 44px; font-weight: 700; color: #1a2744; margin-top: 14px; }
+.testimonials-header a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #1a2744; text-decoration: none; opacity: 0.4; border-bottom: 1px solid rgba(26,39,68,0.2); padding-bottom: 4px; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.testimonial-card { background: white; padding: 36px 32px 32px; box-shadow: 0 2px 20px rgba(26,39,68,0.06); }
+.quote-mark { font-size: 72px; color: #e8edf5; font-weight: 700; line-height: 0.8; display: block; margin-bottom: 16px; }
+.testimonial-text { font-size: 14px; line-height: 1.8; color: #4a5570; margin-bottom: 24px; }
+.testimonial-author { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #1a2744; font-weight: 700; }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: #1a2744;
+  padding: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+.cta-banner h2 { font-size: 42px; font-weight: 700; color: white; line-height: 1.2; max-width: 520px; }
+.cta-banner h2 span { color: rgba(255,255,255,0.3); font-weight: 300; }
+.cta-actions { display: flex; flex-direction: column; gap: 14px; align-items: flex-end; }
+.btn-white-cta {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 17px 44px; background: #fff; color: #1a2744;
+  text-decoration: none; font-weight: 700; white-space: nowrap;
+}
+.nbn-link {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 3px; white-space: nowrap;
+}
+.nbn-link:hover { color: rgba(255,255,255,0.6); }
+
+/* ── FOOTER ── */
+footer {
+  background: #111c33;
+  padding: 64px 80px 36px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 52px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand-name { font-size: 18px; font-weight: 700; color: white; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+.footer-brand p { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.38); max-width: 260px; }
+.footer-col h4 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-bottom: 20px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.38); text-decoration: none; margin-bottom: 11px; transition: color 0.3s; }
+.footer-col a:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.22); }
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
+  .nav-links { display: none; }
+  .nav-logo { font-size: 16px; }
+  .nav-cta { padding: 10px 18px; font-size: 9px; }
+
+  /* Hero sections */
+  .hero, .page-hero { min-height: auto !important; grid-template-columns: 1fr !important; }
+  .hero-left, .hero-content { padding: 52px 24px 40px !important; }
+  .hero-left h1, .page-hero h1 { font-size: 38px !important; }
+  .hero-left h1 em { font-size: 32px !important; }
+  .hero-right { display: none !important; }
+  .hero-btns { flex-direction: column; gap: 12px; }
+  .btn-white, .btn-navy, .btn-text { width: 100%; text-align: center; }
+
+  /* Intro strips */
+  .intro-strip, .intro, .promise-strip { grid-template-columns: 1fr !important; }
+  .strip-item, .intro-item, .promise-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 28px 24px !important; }
+
+  /* Service rows */
+  .service-row, .svc-row { grid-template-columns: 1fr !important; padding: 24px !important; gap: 12px !important; }
+  .sr-num, .svc-icon-lg { display: none; }
+
+  /* Cards and grids */
+  .cards, .types-grid, .type-grid, .prop-grid, .values-grid, .svc-grid,
+  .testimonial-grid, .process-steps, .process-grid, .team-qualities,
+  .extra-list { grid-template-columns: 1fr !important; }
+
+  /* Two-column sections */
+  .intro-strip, .why-israel, .properties-cta, .guarantee, .extras,
+  .prop-left, .story, .team-feature, .cta-banner, .services-links .svc-grid,
+  .why-israel, .intro { grid-template-columns: 1fr !important; flex-direction: column !important; }
+
+  .team-feature { flex-direction: column; }
+  .team-photo { min-height: 280px !important; }
+
+  /* Padding fixes */
+  .packages, .services, .process, .testimonials, .invest-types,
+  .prop-types, .extras, .guarantee, .properties-cta, .why-israel,
+  .cta-banner, .services-links, .story, .team, .values, .mission,
+  .how-we-work, .invest-types { padding: 52px 24px !important; margin: 0 !important; }
+
+  footer .footer-top { grid-template-columns: 1fr !important; gap: 32px; }
+  footer { padding: 40px 24px 24px !important; }
+
+  /* Text sizing */
+  h1 { font-size: 36px !important; }
+  h2 { font-size: 28px !important; }
+  .cta-banner h2 { font-size: 26px !important; max-width: 100% !important; }
+  .packages-header h2, .services h2, .team h2, .values h2 { font-size: 30px !important; }
+
+  /* Cards full width */
+  .card, .type-card, .prop-card, .value-card, .testimonial-card,
+  .step, .proc-card { width: 100% !important; }
+
+  /* Properties CTA */
+  .properties-cta { margin: 0 !important; }
+  .prop-left, .prop-right { padding: 40px 24px !important; }
+
+  /* Mission */
+  .mission { padding: 40px 24px !important; }
+  .mission blockquote { font-size: 18px !important; }
+
+  /* Contact form */
+  .main { grid-template-columns: 1fr !important; }
+  .info-panel, .form-panel { padding: 40px 24px !important; }
+  .form-row { grid-template-columns: 1fr !important; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/index.html" class="nav-logo">Easy Landing</a>
+  <ul class="nav-links">
+    <li><a href="/aliyah-services.html" class="active">Aliyah & Relocation</a></li>
+    <li><a href="/real-estate.html">Real Estate</a></li>
+    <li><a href="/property-management.html">Property Management</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/aliyah-services.html">Testimonials</a></li>
+  </ul>
+  <a href="/contact.html" class="nav-cta">Free Consultation</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-divider"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Our Services</div>
+    <h1>Aliyah &<br>Relocation</h1>
+    <p>We know from personal experience how time-consuming and stressful Aliyah can be. Our team of Olim and Vatikim are here to guide you every step of the way — for a smooth, seamless arrival in Israel.</p>
+  </div>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div>
+    <h2>Making Aliyah?<br>We're Here to Help.</h2>
+    <p>At Easy Landing, we believe in listening to our clients' requirements and building a structured Aliyah plan tailored to their every need. We take pride in giving families and individuals the best possible Aliyah services at a fair price.</p>
+    <p>Each plan covers the main aspects of Aliyah and life in Israel — from financial planning and housing to insurance, legal advice, and much more.</p>
+  </div>
+  <ul class="intro-points">
+    <li>Our team members are Olim and Vatikim themselves</li>
+    <li>Customized plans built around your specific needs</li>
+    <li>Full advocacy and representation at government offices</li>
+    <li>Support before, during, and after your Aliyah</li>
+    <li>Trusted by hundreds of families worldwide</li>
+  </ul>
+</div>
+
+<!-- PACKAGES -->
+<section class="packages">
+  <div class="packages-header">
+    <div class="eyebrow">Choose Your Plan</div>
+    <h2>Our Aliyah Service Packages</h2>
+    <p>Three tailored packages to match every need and budget — or let us build a custom plan just for you.</p>
+  </div>
+  <div class="cards">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-tag">Package 01</div>
+        <h3>All-Inclusive Aliyah Package</h3>
+        <p>Complete end-to-end support — we stay by your side before, during, and after your Aliyah to protect you and your interests.</p>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Initial consultation</li>
+          <li>Finding your home in Israel</li>
+          <li>Help sell your existing US home</li>
+          <li>Shipping coordination</li>
+          <li>Selecting schools</li>
+          <li>Post-Aliyah game plan</li>
+          <li>House setup & home logistics</li>
+          <li>Misrad Hapnim / Ministry of Interior</li>
+          <li>Ministry of Aliyah & Integration</li>
+          <li>Dept. of Motor Vehicles</li>
+          <li>Bank account application</li>
+          <li>Health services registration</li>
+          <li>Phone, WiFi & cable setup</li>
+          <li>Arnona / municipal tax setup</li>
+          <li>Ulpan (Hebrew classes)</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="/contact.html" class="btn-outline">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Card 2 — Featured -->
+    <div class="card featured">
+      <div class="card-header">
+        <div class="card-tag">Package 02</div>
+        <div class="card-badge">Most Popular</div>
+        <h3>Bureaucracy Package</h3>
+        <p>We schedule appointments and accompany you until completion — representing and speaking on your behalf at every critical meeting.</p>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Ministry of Interior</li>
+          <li>Ministry of Aliyah & Integration</li>
+          <li>Dept. of Motor Vehicles registration</li>
+          <li>Bank account application</li>
+          <li>Health services registration</li>
+          <li>SIM card / phone line setup</li>
+          <li>WiFi / internet setup</li>
+          <li>TV / cable setup</li>
+          <li>Arnona / water registration</li>
+          <li>Home electricity registration</li>
+          <li>Home gas setup & registration</li>
+          <li>And whatever else you need!</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="/contact.html" class="btn-white-full">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-tag">Package 03</div>
+        <h3>Build Your Own Package</h3>
+        <p>Every Aliyah is unique. We'll work with you to create a fully customized plan that fits exactly what you and your family need.</p>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Fully customized to your needs</li>
+          <li>Pick any combination of services</li>
+          <li>Flexible scheduling</li>
+          <li>Individual or family plans</li>
+          <li>Ongoing support available</li>
+          <li>Direct access to our team</li>
+          <li>All paths lead to the same place — a smooth, relaxing arrival</li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        <a href="/contact.html" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-header">
+    <div class="eyebrow">How It Works</div>
+    <h2>Your Aliyah Journey with Easy Landing</h2>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>Free Consultation</h4>
+      <p>We start by learning about your goals, timeline, and needs to understand your unique situation.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>Custom Aliyah Plan</h4>
+      <p>We build a structured, step-by-step plan tailored to you and your family's requirements.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>We Handle Everything</h4>
+      <p>Our team accompanies you, represents you, and navigates every appointment on your behalf.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>Smooth Arrival</h4>
+      <p>You settle in with confidence — we remain available for continued support even after Aliyah.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header">
+    <div>
+      <div class="eyebrow">Client Stories</div>
+      <h2>Words from Our Clients</h2>
+    </div>
+    <a href="/aliyah-services.html">Read All Testimonials →</a>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">My experience with David and Gideon of Easy Landing was flawless! They arranged the necessary appointment, met me at the site, advocated effectively, and guided me through the entire process.</p>
+      <div class="testimonial-author">Mark Friedman · Forest Hills, NY</div>
+    </div>
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Words cannot express how easy your company made our Aliyah process. From the moment we met, you came through on even more than what you offered my family.</p>
+      <div class="testimonial-author">David Dweck · Director, Camp Allsport</div>
+    </div>
+    <div class="testimonial-card">
+      <span class="quote-mark">"</span>
+      <p class="testimonial-text">Thanks so much — everything is perfect. You and Gideon have been great, and we have told all our friends how helpful you have both been. See you in Israel soon!</p>
+      <div class="testimonial-author">Alan Weichselbaum · New Rochelle, NY</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Ready to Start Your <span>Aliyah Journey?</span></h2>
+  <div class="cta-actions">
+    <a href="/contact.html" class="btn-white-cta">Get a Free Consultation</a>
+    <a href="https://www.nbn.org.il" target="_blank" class="nbn-link">Start your NBN application →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Easy Landing</div>
+      <p>Concierge bureaucracy services in Israel. Turning problems into solutions for Aliyah and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="/aliyah-services.html">Aliyah & Relocation</a>
+      <a href="/real-estate.html">Real Estate</a>
+      <a href="/property-management.html">Property Management</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about.html">About</a>
+      <a href="/aliyah-services.html">Testimonials</a>
+      <a href="https://easylandingil.com/blog/">News</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <a href="tel:+16468329712">+1 (646) 832-9712</a>
+      <a href="/cdn-cgi/l/email-protection#cf8baeb9a6ab8f8aaebcb683aea1aba6a1a8e1a6a1a9a0"><span class="__cf_email__" data-cfemail="dd99bcabb4b99d98bcaea491bcb3b9b4b3baf3b4b3bbb2">[email&#160;protected]</span></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>�

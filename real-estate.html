@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easy Landing – Real Estate Investment</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: inherit; background: #0d1528; color: #1a2744; }
+
+/* ── NAV ── */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 60px; background: #0d1528;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { font-size: 20px; letter-spacing: 3px; color: #fff; font-weight: 700; text-transform: uppercase; text-decoration: none; }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
+.nav-links a:hover { color: rgba(255,255,255,0.9); }
+.nav-links a.active { color: #fff; }
+.nav-cta { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 12px 26px; background: #fff; color: #0d1528; text-decoration: none; font-weight: 700; }
+.nav-cta:hover { background: rgba(255,255,255,0.88); }
+
+/* ── HERO ── */
+.hero { min-height: 88vh; background: #0d1528; position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 90px 80px; position: relative; z-index: 2; }
+.hero-right { position: relative; overflow: hidden; }
+.hero-right-img { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1600https://easylandingil.com/wp-content/uploads/2022/09/iStock-868196434-scaled.jpegq=80'); background-size: cover; background-position: center; opacity: 0.38; }
+.hero-right::before { content: ''; position: absolute; inset: 0; left: -1px; background: linear-gradient(90deg, #0d1528 0%, transparent 60%); z-index: 2; }
+.hero-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,21,40,0.4) 0%, rgba(13,21,40,0.1) 100%); z-index: 1; }
+.hero-tag { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 28px; display: flex; align-items: center; gap: 14px; }
+.hero-tag::before { content: ''; width: 32px; height: 1px; background: rgba(255,255,255,0.2); }
+.hero-left h1 { font-size: 68px; font-weight: 700; color: white; line-height: 1.06; margin-bottom: 10px; }
+.hero-left h1 em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.28); display: block; font-size: 56px; }
+.hero-divider { width: 50px; height: 1px; background: rgba(255,255,255,0.15); margin: 28px 0; }
+.hero-left p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.45); max-width: 460px; margin-bottom: 44px; }
+.hero-btns { display: flex; gap: 14px; align-items: center; }
+.btn-white { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; padding: 17px 44px; background: #fff; color: #0d1528; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+.btn-white:hover { background: rgba(255,255,255,0.88); }
+.btn-text { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 3px; }
+.btn-text:hover { color: rgba(255,255,255,0.7); }
+.hero-stat { position: absolute; bottom: 48px; right: 48px; z-index: 5; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 24px 32px; }
+.hero-stat-num { font-size: 40px; font-weight: 700; color: white; line-height: 1; margin-bottom: 6px; }
+.hero-stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+/* ── INTRO STRIP ── */
+.intro-strip { display: grid; grid-template-columns: repeat(3,1fr); background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.intro-item { padding: 40px 48px; border-right: 1px solid rgba(255,255,255,0.05); display: flex; align-items: flex-start; gap: 18px; }
+.intro-item:last-child { border-right: none; }
+.intro-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.intro-item h4 { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 6px; }
+.intro-item p { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.35); }
+
+/* ── PROCESS ── */
+.process { padding: 90px 80px; background: #ffffff; }
+.section-eyebrow { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: rgba(26,39,68,0.38); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+.section-eyebrow::before { content: ''; width: 26px; height: 1px; background: rgba(26,39,68,0.2); }
+.process h2 { font-size: 46px; font-weight: 700; color: #1a2744; margin-bottom: 56px; margin-top: 14px; }
+.service-list { display: flex; flex-direction: column; gap: 2px; }
+.service-row { display: grid; grid-template-columns: 80px 1fr 1.2fr; background: #f4f6fb; padding: 38px 44px; align-items: center; gap: 48px; border-left: 2px solid rgba(255,255,255,0.05); transition: all 0.35s; cursor: default; }
+.service-row:hover { background: #e8edf5; border-left-color: #1a2744; }
+.sr-num { font-size: 13px; letter-spacing: 3px; color: rgba(26,39,68,0.3); font-weight: 600; }
+.sr-title { font-size: 20px; font-weight: 700; color: #1a2744; }
+.sr-desc { font-size: 13px; line-height: 1.8; color: #6a7690; }
+
+/* ── INVESTMENT TYPES ── */
+.invest-types { padding: 0 80px 90px; background: #f4f6fb; }
+.invest-types h2 { font-size: 46px; font-weight: 700; color: #1a2744; margin-bottom: 36px; margin-top: 14px; }
+.types-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; }
+.type-card { background: white; padding: 40px 32px; border: 1px solid #e8edf5; transition: all 0.35s; cursor: default; }
+.type-card:hover { background: #f4f6fb; border-color: #1a2744; }
+.type-icon { font-size: 30px; margin-bottom: 20px; display: block; }
+.type-card h4 { font-size: 16px; font-weight: 700; color: #1a2744; margin-bottom: 10px; }
+.type-card p { font-size: 12px; line-height: 1.75; color: #6a7690; }
+
+/* ── WHY ISRAEL ── */
+.why-israel { margin: 0 80px 90px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); padding: 70px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.why-left h2 { font-size: 40px; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 18px; margin-top: 14px; }
+.why-left p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.42); margin-bottom: 36px; }
+.why-points { display: flex; flex-direction: column; gap: 2px; }
+.why-point { background: rgba(255,255,255,0.03); padding: 22px 26px; display: flex; align-items: flex-start; gap: 16px; border-left: 2px solid rgba(255,255,255,0.06); transition: all 0.3s; }
+.why-point:hover { border-left-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.06); }
+.why-point-icon { font-size: 20px; flex-shrink: 0; }
+.why-point h4 { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 4px; }
+.why-point p { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,0.35); }
+
+/* ── PROPERTIES CTA ── */
+.properties-cta { margin: 0 80px 90px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
+.prop-left { background: white; padding: 60px 56px; display: flex; flex-direction: column; justify-content: center; }
+.eyebrow-dark { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: rgba(26,39,68,0.38); margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+.eyebrow-dark::before { content: ''; width: 26px; height: 1px; background: rgba(26,39,68,0.2); }
+.prop-left h3 { font-size: 34px; font-weight: 700; color: #1a2744; line-height: 1.2; margin-bottom: 16px; }
+.prop-left p { font-size: 14px; line-height: 1.85; color: #6a7690; margin-bottom: 32px; }
+.btn-navy { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; padding: 16px 40px; background: #1a2744; color: #fff; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+.btn-navy:hover { background: #0d1528; }
+.prop-right { background: rgba(255,255,255,0.03); padding: 60px 56px; display: flex; flex-direction: column; justify-content: center; gap: 24px; border-left: 1px solid rgba(255,255,255,0.07); }
+.prop-right h3 { font-size: 26px; font-weight: 700; color: rgba(255,255,255,0.85); margin-bottom: 8px; }
+.prop-right p { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.38); }
+.btn-outline-white { display: inline-block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; padding: 15px 36px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.65); text-decoration: none; font-weight: 700; transition: all 0.3s; text-align: center; }
+.btn-outline-white:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.4); color: white; }
+
+/* ── CTA BANNER ── */
+.cta-banner { background: white; padding: 80px; display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+.cta-banner h2 { font-size: 44px; font-weight: 700; color: #1a2744; line-height: 1.2; max-width: 520px; }
+.cta-banner h2 span { color: rgba(26,39,68,0.25); font-weight: 300; }
+.cta-actions { display: flex; flex-direction: column; gap: 14px; align-items: flex-end; }
+.link-small { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(26,39,68,0.35); text-decoration: none; border-bottom: 1px solid rgba(26,39,68,0.15); padding-bottom: 3px; }
+
+/* ── FOOTER ── */
+footer { background: #080e1c; padding: 64px 80px 36px; }
+.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 52px; padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-brand-name { font-size: 18px; font-weight: 700; color: white; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+.footer-brand p { font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.3); max-width: 260px; }
+.footer-col h4 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.32); text-decoration: none; margin-bottom: 11px; transition: color 0.3s; }
+.footer-col a:hover { color: rgba(255,255,255,0.75); }
+.footer-bottom { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.18); }
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
+  .nav-links { display: none; }
+  .nav-logo { font-size: 16px; }
+  .nav-cta { padding: 10px 18px; font-size: 9px; }
+
+  /* Hero sections */
+  .hero, .page-hero { min-height: auto !important; grid-template-columns: 1fr !important; }
+  .hero-left, .hero-content { padding: 52px 24px 40px !important; }
+  .hero-left h1, .page-hero h1 { font-size: 38px !important; }
+  .hero-left h1 em { font-size: 32px !important; }
+  .hero-right { display: none !important; }
+  .hero-btns { flex-direction: column; gap: 12px; }
+  .btn-white, .btn-navy, .btn-text { width: 100%; text-align: center; }
+
+  /* Intro strips */
+  .intro-strip, .intro, .promise-strip { grid-template-columns: 1fr !important; }
+  .strip-item, .intro-item, .promise-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 28px 24px !important; }
+
+  /* Service rows */
+  .service-row, .svc-row { grid-template-columns: 1fr !important; padding: 24px !important; gap: 12px !important; }
+  .sr-num, .svc-icon-lg { display: none; }
+
+  /* Cards and grids */
+  .cards, .types-grid, .type-grid, .prop-grid, .values-grid, .svc-grid,
+  .testimonial-grid, .process-steps, .process-grid, .team-qualities,
+  .extra-list { grid-template-columns: 1fr !important; }
+
+  /* Two-column sections */
+  .intro-strip, .why-israel, .properties-cta, .guarantee, .extras,
+  .prop-left, .story, .team-feature, .cta-banner, .services-links .svc-grid,
+  .why-israel, .intro { grid-template-columns: 1fr !important; flex-direction: column !important; }
+
+  .team-feature { flex-direction: column; }
+  .team-photo { min-height: 280px !important; }
+
+  /* Padding fixes */
+  .packages, .services, .process, .testimonials, .invest-types,
+  .prop-types, .extras, .guarantee, .properties-cta, .why-israel,
+  .cta-banner, .services-links, .story, .team, .values, .mission,
+  .how-we-work, .invest-types { padding: 52px 24px !important; margin: 0 !important; }
+
+  footer .footer-top { grid-template-columns: 1fr !important; gap: 32px; }
+  footer { padding: 40px 24px 24px !important; }
+
+  /* Text sizing */
+  h1 { font-size: 36px !important; }
+  h2 { font-size: 28px !important; }
+  .cta-banner h2 { font-size: 26px !important; max-width: 100% !important; }
+  .packages-header h2, .services h2, .team h2, .values h2 { font-size: 30px !important; }
+
+  /* Cards full width */
+  .card, .type-card, .prop-card, .value-card, .testimonial-card,
+  .step, .proc-card { width: 100% !important; }
+
+  /* Properties CTA */
+  .properties-cta { margin: 0 !important; }
+  .prop-left, .prop-right { padding: 40px 24px !important; }
+
+  /* Mission */
+  .mission { padding: 40px 24px !important; }
+  .mission blockquote { font-size: 18px !important; }
+
+  /* Contact form */
+  .main { grid-template-columns: 1fr !important; }
+  .info-panel, .form-panel { padding: 40px 24px !important; }
+  .form-row { grid-template-columns: 1fr !important; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/index.html" class="nav-logo">Easy Landing</a>
+  <ul class="nav-links">
+    <li><a href="/aliyah-services.html">Aliyah & Relocation</a></li>
+    <li><a href="/real-estate.html" class="active">Real Estate</a></li>
+    <li><a href="/property-management.html">Property Management</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/aliyah-services.html">Testimonials</a></li>
+  </ul>
+  <a href="/contact.html" class="nav-cta">Free Consultation</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Real Estate Investment · Israel</div>
+    <h1>Invest in Israel.<br><em>With Confidence.</em></h1>
+    <div class="hero-divider"></div>
+    <p>Whether you're searching for a dream home, a vacation property, or a profitable investment — Easy Landing is your trusted concierge for navigating Israel's real estate market from start to finish.</p>
+    <div class="hero-btns">
+      <a href="/contact.html" class="btn-white">Get Started</a>
+      <a href="https://kleingrp.com/properties/" target="_blank" class="btn-text">View Properties →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-img"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label">Client-First Approach</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-item">
+    <span class="intro-icon">🔒</span>
+    <div>
+      <h4>Your Interests Protected</h4>
+      <p>We carefully select who we work with. Our top priority is always to protect our clients' interests and agenda.</p>
+    </div>
+  </div>
+  <div class="intro-item">
+    <span class="intro-icon">🌐</span>
+    <div>
+      <h4>Israel's Finest Network</h4>
+      <p>Access our vetted network of brokers, agents, legal and financial professionals across Israel.</p>
+    </div>
+  </div>
+  <div class="intro-item">
+    <span class="intro-icon">📋</span>
+    <div>
+      <h4>End-to-End Support</h4>
+      <p>From first consultation to final handover — we provide ongoing oversight and project management throughout.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-eyebrow">Our Process</div>
+  <h2>How We Work With You</h2>
+  <div class="service-list">
+    <div class="service-row">
+      <div class="sr-num">01</div>
+      <div class="sr-title">Free Consultation</div>
+      <div class="sr-desc">We start by getting to know you — your goals, budget, and investment ideas — so we can build a plan that truly works for you.</div>
+    </div>
+    <div class="service-row">
+      <div class="sr-num">02</div>
+      <div class="sr-title">Your Investment Plan</div>
+      <div class="sr-desc">A tailored, step-by-step plan with structured targets and full transparency at every stage of the process.</div>
+    </div>
+    <div class="service-row">
+      <div class="sr-num">03</div>
+      <div class="sr-title">Israel's Finest Network</div>
+      <div class="sr-desc">We introduce you to our carefully vetted brokers, agents, legal and financial professionals — the best in Israel, selected for your needs.</div>
+    </div>
+    <div class="service-row">
+      <div class="sr-num">04</div>
+      <div class="sr-title">Ongoing Oversight</div>
+      <div class="sr-desc">Continuous project management at every stage. Our team works around the clock so every detail is addressed — giving you complete peace of mind.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT TYPES -->
+<section class="invest-types">
+  <div class="section-eyebrow">What We Can Help With</div>
+  <h2>Types of Investment</h2>
+  <div class="types-grid">
+    <div class="type-card">
+      <span class="type-icon">🏢</span>
+      <h4>Apartments & Homes</h4>
+      <p>Dream homes, vacation properties, and investment apartments across Israel's most desirable cities.</p>
+    </div>
+    <div class="type-card">
+      <span class="type-icon">🏗️</span>
+      <h4>Buildings & Land</h4>
+      <p>Commercial buildings, development plots, and large-scale investments with full project management.</p>
+    </div>
+    <div class="type-card">
+      <span class="type-icon">💼</span>
+      <h4>Startups & Business</h4>
+      <p>Tap into Israel's world-class startup ecosystem with trusted connections and expert local guidance.</p>
+    </div>
+    <div class="type-card">
+      <span class="type-icon">🌿</span>
+      <h4>Unique Investments</h4>
+      <p>Vineyards, boutique ventures, and one-of-a-kind opportunities — we open doors others can't.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ISRAEL -->
+<div class="why-israel">
+  <div class="why-left">
+    <div class="section-eyebrow">Why Israel</div>
+    <h2>A Market Full of Opportunity</h2>
+    <p>Israel's real estate market offers unique and profitable opportunities for foreign investors — with the right guidance and local expertise by your side.</p>
+    <a href="/contact.html" class="btn-white">Talk to Our Team</a>
+  </div>
+  <div class="why-points">
+    <div class="why-point"><span class="why-point-icon">📈</span><div><h4>Strong Market Growth</h4><p>Israel's property market has shown consistent appreciation, making it an attractive long-term investment.</p></div></div>
+    <div class="why-point"><span class="why-point-icon">🌍</span><div><h4>Global Demand</h4><p>High demand from international buyers keeps the market active and properties desirable year-round.</p></div></div>
+    <div class="why-point"><span class="why-point-icon">🔒</span><div><h4>Stable Economy</h4><p>Israel's tech-driven economy and strong institutions provide a reliable foundation for real estate investment.</p></div></div>
+    <div class="why-point"><span class="why-point-icon">🤝</span><div><h4>Expert Local Support</h4><p>With Easy Landing, you have trusted advocates who know the market inside and out.</p></div></div>
+  </div>
+</div>
+
+<!-- PROPERTIES CTA -->
+<div class="properties-cta">
+  <div class="prop-left">
+    <div class="eyebrow-dark">Browse Listings</div>
+    <h3>View Our Current Properties</h3>
+    <p>We partner with The Klein Group to provide access to a curated selection of properties across Israel — from Tel Aviv apartments to Jerusalem homes and beyond.</p>
+    <a href="https://kleingrp.com/properties/" target="_blank" class="btn-navy">View All Properties →</a>
+  </div>
+  <div class="prop-right">
+    <div>
+      <div class="section-eyebrow" style="margin-bottom:12px;">Custom Search</div>
+      <h3>Can't Find What You're Looking For?</h3>
+      <p>Tell us exactly what you need and we'll leverage our full network to find the right property for you.</p>
+    </div>
+    <a href="/contact.html" class="btn-outline-white">Send Us Your Requirements</a>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Invest <span>in Israel?</span></h2>
+  <div class="cta-actions">
+    <a href="/contact.html" class="btn-navy">Get a Free Consultation</a>
+    <a href="https://kleingrp.com/properties/" target="_blank" class="link-small">Browse properties →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Easy Landing</div>
+      <p>Concierge bureaucracy services in Israel. Turning problems into solutions for Aliyah and beyond.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="/aliyah-services.html">Aliyah & Relocation</a>
+      <a href="/real-estate.html">Real Estate</a>
+      <a href="/property-management.html">Property Management</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about.html">About</a>
+      <a href="/aliyah-services.html">Testimonials</a>
+      <a href="https://easylandingil.com/blog/">News</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <a href="tel:+16468329712">+1 (646) 832-9712</a>
+      <a href="/cdn-cgi/l/email-protection#a9edc8dfc0cde9ecc8dad0e5c8c7cdc0c7ce87c0c7cfc6"><span class="__cf_email__" data-cfemail="f1b590879895b1b4908288bd909f95989f96df989f979e">[email&#160;protected]</span></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>�
