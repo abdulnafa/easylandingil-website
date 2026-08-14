@@ -32,6 +32,14 @@
       src: url("assets/home-new/instrument-serif-italic.woff2") format("woff2");
     }
 
+    @font-face {
+      font-family: "Tenor Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("assets/home-new/tenor-sans.woff2") format("woff2");
+    }
+
     :root {
       --navy-950: #071126;
       --navy-900: #0b1733;
@@ -137,7 +145,7 @@
       margin: 0;
       color: var(--navy-900);
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: clamp(2.4rem, 5.7vw, 5.8rem);
+      font-size: clamp(2.15rem, 4.8vw, 4.9rem);
       font-weight: 400;
       letter-spacing: -0.045em;
       line-height: 0.98;
@@ -407,7 +415,7 @@
     .hero h1 {
       margin: 0;
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: clamp(3.1rem, 8.3vw, 7.8rem);
+      font-size: clamp(2.8rem, 7.4vw, 6.9rem);
       font-weight: 400;
       letter-spacing: 0.12em;
       line-height: 0.96;
@@ -731,7 +739,7 @@
       margin: 0;
       color: var(--navy-900);
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: clamp(1.55rem, 2.4vw, 2.25rem);
+      font-size: clamp(1.4rem, 2vw, 1.95rem);
       font-weight: 400;
       line-height: 1.08;
     }
@@ -839,7 +847,7 @@
     .team-card h3 {
       margin: 0 0 5px;
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+      font-size: clamp(1.35rem, 2vw, 1.95rem);
       font-weight: 400;
     }
 
@@ -924,7 +932,7 @@
       max-width: 820px;
       margin: 0 auto 24px;
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: clamp(2.5rem, 6vw, 6rem);
+      font-size: clamp(2.2rem, 5.2vw, 5rem);
       font-weight: 400;
       letter-spacing: -0.045em;
       line-height: 0.98;
@@ -1065,6 +1073,17 @@
       stroke-width: 1.8;
     }
 
+    .hero h1,
+    .section-title,
+    .service-card h3,
+    .team-card h3,
+    .closing-cta h2,
+    .footer-brand h2,
+    .footer-column h3 {
+      font-family: "Tenor Sans", "Instrument Sans", Arial, sans-serif;
+      font-weight: 400;
+    }
+
     :focus-visible {
       outline: 3px solid var(--sand);
       outline-offset: 4px;
@@ -1130,7 +1149,7 @@
       }
 
       .hero h1 {
-        font-size: clamp(2.7rem, 12vw, 5rem);
+        font-size: clamp(2.5rem, 10.8vw, 4.4rem);
         letter-spacing: 0.08em;
         text-indent: 0.08em;
       }
@@ -1209,7 +1228,7 @@
       }
 
       .hero h1 {
-        font-size: clamp(2.65rem, 13.5vw, 4.3rem);
+        font-size: clamp(2.4rem, 11.8vw, 3.8rem);
         letter-spacing: 0.045em;
         text-indent: 0.045em;
       }
@@ -1249,7 +1268,7 @@
       }
 
       .section-title {
-        font-size: clamp(2.35rem, 12vw, 4rem);
+        font-size: clamp(2.05rem, 10.5vw, 3.4rem);
       }
 
       .location-media {
@@ -1481,18 +1500,18 @@
 
         <div class="team-grid">
           <article class="team-card">
-            <img src="assets/home-new/team-2.jpeg" alt="David Hozainov" loading="lazy" width="1079" height="1600">
+            <img src="assets/home-new/team-2.jpeg" alt="Rafi Klein" loading="lazy" width="1079" height="1600">
             <div class="team-card-copy">
-              <h3>David Hozainov</h3>
-              <p>Managing Director & Founder</p>
+              <h3>Rafi Klein</h3>
+              <p>Founder, The Klein Group<br>Director of Operations (IL)</p>
             </div>
           </article>
 
           <article class="team-card">
-            <img src="assets/home-new/team-1.jpeg" alt="Rafi Klein" loading="lazy" width="640" height="750">
+            <img src="assets/home-new/team-1.jpeg" alt="David Hozainov" loading="lazy" width="640" height="750">
             <div class="team-card-copy">
-              <h3>Rafi Klein</h3>
-              <p>Founder, The Klein Group<br>Director of Operations (IL)</p>
+              <h3>David Hozainov</h3>
+              <p>Managing Director & Founder</p>
             </div>
           </article>
         </div>
