@@ -620,7 +620,7 @@
       width: 78%;
       height: 84%;
       object-fit: cover;
-      box-shadow: var(--shadow);
+      box-shadow: 0 16px 44px rgba(7, 17, 38, 0.1);
     }
 
     .location-media .image-secondary {
@@ -630,26 +630,9 @@
       width: 50%;
       height: 43%;
       object-fit: cover;
-      border: 12px solid var(--paper);
-      box-shadow: 0 18px 48px rgba(7, 17, 38, 0.18);
-    }
-
-    .location-badge {
-      position: absolute;
-      right: 4%;
-      bottom: 7%;
-      display: grid;
-      width: 132px;
-      height: 132px;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--navy-900);
-      color: #fff;
-      font-family: "Instrument Serif", Georgia, serif;
-      font-size: 1.1rem;
-      line-height: 1.25;
-      text-align: center;
-      box-shadow: var(--shadow);
+      object-position: center 64%;
+      border: 8px solid var(--paper);
+      box-shadow: 0 10px 30px rgba(7, 17, 38, 0.1);
     }
 
     .services {
@@ -664,21 +647,6 @@
       align-items: end;
       justify-content: space-between;
       gap: 40px;
-    }
-
-    .text-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 13px;
-      flex: 0 0 auto;
-      padding-bottom: 8px;
-      border-bottom: 1px solid currentColor;
-      color: var(--navy-900);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-decoration: none;
-      text-transform: uppercase;
     }
 
     .service-grid {
@@ -714,11 +682,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 600ms cubic-bezier(0.2, 0.72, 0.2, 1);
-    }
-
-    .service-card:hover img {
-      transform: scale(1.045);
     }
 
     .service-number {
@@ -746,31 +709,9 @@
 
     .service-card p {
       min-height: 78px;
-      margin: 18px 0 24px;
+      margin: 18px 0 0;
       color: var(--muted);
       font-size: 0.92rem;
-    }
-
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--navy-900);
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.17em;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    .card-link span {
-      font-size: 1.25rem;
-      transition: transform 180ms ease;
-    }
-
-    .card-link:hover span,
-    .card-link:focus-visible span {
-      transform: translateX(5px);
     }
 
     .about {
@@ -857,45 +798,6 @@
       font-size: 0.68rem;
       letter-spacing: 0.15em;
       line-height: 1.65;
-      text-transform: uppercase;
-    }
-
-    .testimonial {
-      position: relative;
-      padding: clamp(80px, 10vw, 145px) clamp(22px, 6vw, 92px);
-      background: var(--paper);
-      text-align: center;
-    }
-
-    .testimonial-inner {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .quote-mark {
-      display: block;
-      height: 72px;
-      color: var(--sand);
-      font-family: "Instrument Serif", Georgia, serif;
-      font-size: 7rem;
-      line-height: 1;
-    }
-
-    blockquote {
-      margin: 18px 0 30px;
-      color: var(--navy-900);
-      font-family: "Instrument Serif", Georgia, serif;
-      font-size: clamp(1.65rem, 3.4vw, 3.25rem);
-      line-height: 1.24;
-    }
-
-    .quote-author {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.7rem;
-      font-style: normal;
-      font-weight: 700;
-      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
@@ -1094,7 +996,130 @@
       to { transform: scale(1.015); }
     }
 
+    @media (min-width: 1041px) {
+      .site-header {
+        min-height: 56px;
+        justify-content: center;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .site-header.is-scrolled {
+        min-height: 60px;
+      }
+
+      .site-header .brand {
+        display: none;
+      }
+
+      .desktop-nav {
+        justify-content: center;
+      }
+
+      .desktop-nav .nav-contact {
+        padding: 9px 0;
+        border: 0;
+      }
+
+      .hero-content {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        padding: 0;
+        text-align: left;
+      }
+
+      .hero-branding {
+        position: absolute;
+        top: 35%;
+        left: clamp(42px, 6vw, 92px);
+        transform: translateY(-50%);
+      }
+
+      .hero-kicker {
+        display: none;
+      }
+
+      .hero h1 {
+        max-width: 600px;
+        font-size: clamp(2.3rem, 3.6vw, 4rem);
+        letter-spacing: 0.09em;
+        line-height: 1;
+        text-indent: 0;
+      }
+
+      .hero-subtitle {
+        margin-top: 13px;
+        font-size: clamp(0.68rem, 1vw, 0.86rem);
+        letter-spacing: 0.3em;
+        text-indent: 0;
+      }
+
+      .social-row {
+        position: absolute;
+        bottom: clamp(42px, 8vh, 56px);
+        left: clamp(28px, 5vw, 76px);
+        justify-content: flex-start;
+        gap: 16px;
+        margin: 0;
+      }
+
+      .social-link {
+        width: 36px;
+        height: 36px;
+      }
+
+      .social-link svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      .hero-actions {
+        position: absolute;
+        right: clamp(105px, 8vw, 160px);
+        bottom: clamp(42px, 8vh, 56px);
+        left: 52%;
+        display: flex;
+        width: auto;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        margin: 0;
+      }
+
+      .call-button {
+        min-height: 42px;
+        padding: 0 22px;
+        font-size: 0.68rem;
+      }
+
+      .properties-link {
+        font-size: 0.68rem;
+      }
+
+      .scroll-cue,
+      .hero-footnote {
+        display: none;
+      }
+
+      .whatsapp-button {
+        right: 18px;
+        bottom: 16px;
+        width: 50px;
+        height: 50px;
+      }
+
+      .whatsapp-button svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
     @media (max-width: 1040px) {
+      .brand-copy {
+        display: none;
+      }
+
       .desktop-nav {
         display: none;
       }
@@ -1174,10 +1199,6 @@
 
       .section-heading-row {
         display: grid;
-      }
-
-      .text-link {
-        width: fit-content;
       }
 
       .footer-grid {
@@ -1286,14 +1307,6 @@
         border-width: 7px;
       }
 
-      .location-badge {
-        right: 0;
-        bottom: 5%;
-        width: 104px;
-        height: 104px;
-        font-size: 0.9rem;
-      }
-
       .service-card {
         display: block;
       }
@@ -1387,9 +1400,11 @@
   <main id="main-content">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
-        <p class="hero-kicker">A softer arrival. A stronger start.</p>
-        <h1 id="hero-title">Easy Landing</h1>
-        <p class="hero-subtitle">Concierge services · Israel</p>
+        <div class="hero-branding">
+          <p class="hero-kicker">A softer arrival. A stronger start.</p>
+          <h1 id="hero-title">Easy Landing</h1>
+          <p class="hero-subtitle">Concierge services · Israel</p>
+        </div>
 
         <!-- Replace these placeholder links when the client's social URLs arrive. -->
         <div class="social-row" aria-label="Social media">
@@ -1433,10 +1448,10 @@
           </div>
         </div>
 
-        <div class="location-media" aria-label="Prime residential locations in Israel">
-          <img class="image-primary" src="assets/home-new/location-1.webp" alt="Contemporary residential tower in Israel" loading="lazy" width="1400" height="1600">
-          <img class="image-secondary" src="assets/home-new/location-2.webp" alt="Tel Aviv rooftop overlooking the Mediterranean" loading="lazy" width="1030" height="767">
-          <span class="location-badge">Israel<br>Worldwide</span>
+        <div class="location-media">
+          <!-- Documentary photography: aes and Jayson Boesman on Unsplash. -->
+          <img class="image-primary" src="assets/home-new/location-dead-sea.webp" alt="The Dead Sea framed by desert cliffs and distant mountains" loading="lazy" width="1800" height="2700">
+          <img class="image-secondary" src="assets/home-new/location-galilee.webp" alt="Calm water and hills at the Sea of Galilee" loading="lazy" width="1600" height="2395">
         </div>
       </div>
     </section>
@@ -1447,7 +1462,6 @@
           <p class="eyebrow">What we do</p>
           <h2 class="section-title" id="services-title">A seamless journey, <em>start to finish.</em></h2>
         </div>
-        <a class="text-link" href="/aliyah-services.html">Explore all services →</a>
       </div>
 
       <div class="service-grid">
@@ -1459,7 +1473,6 @@
           <div class="service-card-body">
             <h3>Aliyah & Relocation</h3>
             <p>Personal, end-to-end support for bureaucracy, banking, healthcare, schools, and the practical details of building your life in Israel.</p>
-            <a class="card-link" href="/aliyah-services.html">Discover the service <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -1471,7 +1484,6 @@
           <div class="service-card-body">
             <h3>Real Estate</h3>
             <p>Trusted local guidance for buyers and investors, with access to carefully selected opportunities through our Klein Group partnership.</p>
-            <a class="card-link" href="https://kleingrp.com/properties/" target="_blank" rel="noopener noreferrer">View properties <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -1483,7 +1495,6 @@
           <div class="service-card-body">
             <h3>Property Management</h3>
             <p>Hands-off ownership with responsive maintenance, tenant coordination, transparent reporting, and someone you trust always nearby.</p>
-            <a class="card-link" href="/property-management.html">Learn more <span aria-hidden="true">→</span></a>
           </div>
         </article>
       </div>
@@ -1515,15 +1526,6 @@
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="testimonial" aria-labelledby="testimonial-title">
-      <div class="testimonial-inner">
-        <p class="eyebrow" id="testimonial-title">Client story</p>
-        <span class="quote-mark" aria-hidden="true">“</span>
-        <blockquote>My experience with David and Gideon of Easy Landing was flawless! They arranged the necessary appointment, met me at the site, advocated effectively, and guided me through the entire process.</blockquote>
-        <cite class="quote-author">Mark Friedman · Forest Hills, NY</cite>
       </div>
     </section>
 
