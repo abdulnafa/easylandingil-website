@@ -1161,6 +1161,10 @@
         min-height: 78px;
       }
 
+      .location-media {
+        order: -1;
+      }
+
       .brand-copy {
         display: none;
       }
@@ -1325,7 +1329,8 @@
       }
 
       .team-card {
-        min-height: 490px;
+        height: clamp(390px, 112vw, 430px);
+        min-height: 0;
       }
 
       .closing-cta {

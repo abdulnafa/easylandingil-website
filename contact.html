@@ -33,18 +33,55 @@ body { font-family: "Instrument Sans", Arial, sans-serif; background: var(--pape
 h1, h2, h3, h4, h5, h6 { font-family: "Tenor Sans", Arial, sans-serif; font-weight: 400 !important; }
 
 /* ── NAV ── */
-nav {
+.site-nav {
   display: flex; justify-content: space-between; align-items: center;
   padding: 24px 60px; background: #0d1528;
   position: sticky; top: 0; z-index: 100;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.nav-logo { font-size: 20px; letter-spacing: 3px; color: #fff; font-weight: 700; text-transform: uppercase; text-decoration: none; }
+.nav-logo { display: inline-flex; align-items: center; gap: 14px; color: #fff; text-decoration: none; }
+.nav-logo-mark {
+  display: grid; width: 46px; height: 46px; place-items: center;
+  border: 1px solid rgba(255,255,255,0.52);
+  font-family: "Tenor Sans", Arial, sans-serif; font-size: 18px; letter-spacing: -1px;
+}
+.nav-logo-text { font-size: 17px; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.3s; }
 .nav-links a:hover { color: rgba(255,255,255,0.9); }
 .nav-links a.active { color: #fff; }
 .nav-cta { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; padding: 12px 26px; background: #fff; color: #0d1528; text-decoration: none; font-weight: 700; }
+.menu-toggle {
+  position: relative; z-index: 102; display: none; width: 50px; height: 50px;
+  align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 3px;
+  background: transparent; color: #fff; cursor: pointer;
+}
+.menu-lines,
+.menu-lines::before,
+.menu-lines::after {
+  display: block; width: 25px; height: 1px; background: currentColor;
+  content: ""; transition: transform 180ms ease, opacity 180ms ease;
+}
+.menu-lines::before { transform: translateY(-7px); }
+.menu-lines::after { transform: translateY(6px); }
+.menu-toggle[aria-expanded="true"] .menu-lines { background: transparent; }
+.menu-toggle[aria-expanded="true"] .menu-lines::before { transform: translateY(0) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .menu-lines::after { transform: translateY(-1px) rotate(-45deg); }
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 99; display: grid; align-content: center;
+  padding: 100px 30px 45px; background: rgba(8,14,28,0.985);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateY(-12px); transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+}
+.mobile-menu.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
+.mobile-menu-links { display: grid; justify-items: center; gap: 22px; }
+.mobile-menu a {
+  color: rgba(255,255,255,0.82); font-size: clamp(18px,5.5vw,26px);
+  letter-spacing: 0.16em; text-align: center; text-decoration: none; text-transform: uppercase;
+}
+.mobile-menu a[aria-current="page"] { color: var(--sand); }
+body.menu-open { overflow: hidden; }
 
 /* ── PAGE HERO ── */
 .page-hero {
@@ -180,17 +217,28 @@ footer { background: #080e1c; padding: 64px 80px 36px; }
 .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.62); text-decoration: none; margin-bottom: 11px; transition: color 0.3s; }
 .footer-col a:hover { color: rgba(255,255,255,0.75); }
 .footer-bottom { display: flex; justify-content: space-between; gap: 20px; font-size: 12px; color: rgba(255,255,255,0.68); }
+@media (max-width: 1040px) {
+  .site-nav { min-height: 78px; padding: 14px 20px; }
+  .nav-links, .nav-cta, .nav-logo-text { display: none; }
+  .menu-toggle { display: flex; }
+}
+
 @media (max-width: 768px) {
-  nav { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
-  .nav-links { display: none; }
-  .nav-logo { font-size: 16px; }
-  .nav-cta { padding: 10px 18px; font-size: 9px; }
+  .nav-logo-mark { width: 44px; height: 44px; font-size: 17px; }
+  .menu-toggle { width: 48px; height: 48px; }
 
   /* Hero sections */
-  .hero, .page-hero { min-height: auto !important; grid-template-columns: 1fr !important; }
-  .hero-left, .hero-content { padding: 52px 24px 40px !important; }
-  .hero-left h1, .page-hero h1 { font-size: 38px !important; }
+  .hero, .page-hero { min-height: 0 !important; grid-template-columns: 1fr !important; }
+  .page-hero { padding: 48px 24px 52px !important; align-items: flex-start; }
+  .hero-left { padding: 52px 24px 40px !important; }
+  .page-hero .hero-content { width: 100%; max-width: 520px; padding: 0 !important; }
+  .hero-left h1, .page-hero h1 { font-size: 38px !important; line-height: 1.04; margin: 0; }
   .hero-left h1 em { font-size: 32px !important; }
+  .page-hero h1 em { font-size: 34px !important; }
+  .hero-tag { margin-bottom: 14px; letter-spacing: 3.5px; }
+  .hero-divider { margin: 18px 0; }
+  .page-hero p { font-size: 14px; line-height: 1.65; }
+  .hero-bg { background-position: 58% center; opacity: 0.22; }
   .hero-right { display: none !important; }
   .hero-btns { flex-direction: column; gap: 12px; }
   .btn-white, .btn-navy, .btn-text { width: 100%; text-align: center; }
@@ -255,8 +303,11 @@ footer { background: #080e1c; padding: 64px 80px 36px; }
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="/index.html" class="nav-logo">Easy Landing</a>
+<nav class="site-nav">
+  <a href="/home-new.html" class="nav-logo" aria-label="Easy Landing homepage">
+    <span class="nav-logo-mark" aria-hidden="true">EL</span>
+    <span class="nav-logo-text">Easy Landing</span>
+  </a>
   <ul class="nav-links">
     <li><a href="/aliyah-services.html">Aliyah & Relocation</a></li>
     <li><a href="/real-estate.html">Real Estate</a></li>
@@ -264,8 +315,22 @@ footer { background: #080e1c; padding: 64px 80px 36px; }
     <li><a href="/about.html">About</a></li>
     <li><a href="/aliyah-services.html">Testimonials</a></li>
   </ul>
-  <a href="/contact.html" class="nav-cta active" style="background:rgba(255,255,255,0.12);color:white;">Contact Us</a>
+  <a href="/contact.html" class="nav-cta active" aria-current="page" style="background:rgba(255,255,255,0.12);color:white;">Contact Us</a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+    <span class="menu-lines" aria-hidden="true"></span>
+  </button>
 </nav>
+
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-links">
+    <a href="/home-new.html">Home</a>
+    <a href="/aliyah-services.html">Aliyah & Relocation</a>
+    <a href="/real-estate.html">Real Estate</a>
+    <a href="/property-management.html">Property Management</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html" aria-current="page">Contact</a>
+  </div>
+</aside>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -458,6 +523,41 @@ footer { background: #080e1c; padding: 64px 80px 36px; }
     <span>New York · Tel Aviv</span>
   </div>
 </footer>
+
+<script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  function setMenu(open) {
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    mobileMenu.setAttribute("aria-hidden", String(!open));
+    mobileMenu.classList.toggle("is-open", open);
+    document.body.classList.toggle("menu-open", open);
+
+    if (!open) menuToggle.focus({ preventScroll: true });
+  }
+
+  menuToggle.addEventListener("click", () => {
+    setMenu(menuToggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenu(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+      setMenu(false);
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1040 && menuToggle.getAttribute("aria-expanded") === "true") {
+      setMenu(false);
+    }
+  });
+</script>
 
 </body>
 </html>
