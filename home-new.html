@@ -459,10 +459,6 @@
       transform: translateY(-3px);
     }
 
-    .social-link[aria-disabled="true"] {
-      cursor: not-allowed;
-    }
-
     .social-link svg {
       width: 20px;
       height: 20px;
@@ -610,16 +606,17 @@
 
     .location-media {
       position: relative;
-      min-height: 660px;
+      min-height: 500px;
     }
 
     .location-media .image-primary {
       position: absolute;
       top: 0;
       right: 0;
-      width: 78%;
-      height: 84%;
+      width: 100%;
+      height: 72%;
       object-fit: cover;
+      object-position: center 70%;
       box-shadow: 0 16px 44px rgba(7, 17, 38, 0.1);
     }
 
@@ -627,10 +624,10 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 50%;
-      height: 43%;
+      width: 56%;
+      height: 40%;
       object-fit: cover;
-      object-position: center 64%;
+      object-position: center 58%;
       border: 8px solid var(--paper);
       box-shadow: 0 10px 30px rgba(7, 17, 38, 0.1);
     }
@@ -734,19 +731,6 @@
 
     .about .section-copy {
       color: rgba(255, 255, 255, 0.64);
-    }
-
-    .about-link {
-      display: inline-flex;
-      margin-top: 34px;
-      padding: 14px 0 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.54);
-      color: #fff;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-decoration: none;
-      text-transform: uppercase;
     }
 
     .team-grid {
@@ -1143,7 +1127,7 @@
 
       .location-media {
         width: min(800px, 100%);
-        min-height: 610px;
+        min-height: clamp(420px, 55vw, 520px);
         margin: 0 auto;
       }
 
@@ -1301,18 +1285,18 @@
       }
 
       .location-media {
-        min-height: 470px;
+        min-height: clamp(280px, 72vw, 370px);
       }
 
       .location-media .image-primary {
-        width: 87%;
-        height: 83%;
+        width: 100%;
+        height: 70%;
       }
 
       .location-media .image-secondary {
         width: 58%;
         height: 40%;
-        border-width: 7px;
+        border-width: 6px;
       }
 
       .service-card {
@@ -1402,6 +1386,7 @@
     </nav>
     <div class="mobile-menu-meta">
       <a href="tel:+16468329712">+1 (646) 832-9712</a>
+      <a href="mailto:David@EasyLanding.info">David@EasyLanding.info</a>
       <span>Israel · Worldwide support</span>
     </div>
   </aside>
@@ -1415,15 +1400,14 @@
           <p class="hero-subtitle">Concierge services · Israel</p>
         </div>
 
-        <!-- Replace these placeholder links when the client's social URLs arrive. -->
         <div class="social-row" aria-label="Social media">
-          <a class="social-link" href="#" role="link" aria-disabled="true" tabindex="-1" aria-label="Facebook link pending" title="Facebook link will be added">
+          <a class="social-link" href="https://www.facebook.com/profile.php?id=61584210298706" target="_blank" rel="noopener noreferrer" aria-label="Klein Group on Facebook">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.45-3.5H13.7V7.27c0-1.01.28-1.7 1.73-1.7h1.85V2.44a25 25 0 0 0-2.7-.14c-2.67 0-4.5 1.63-4.5 4.63V9.5H7.05V13h3.03v9h3.62Z"/></svg>
           </a>
-          <a class="social-link" href="#" role="link" aria-disabled="true" tabindex="-1" aria-label="LinkedIn link pending" title="LinkedIn link will be added">
+          <a class="social-link" href="https://www.linkedin.com/in/davidhozainov/" target="_blank" rel="noopener noreferrer" aria-label="David Hozainov on LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.34 7.65A2.17 2.17 0 1 0 5.33 3.3a2.17 2.17 0 0 0 0 4.34ZM3.47 20.7H7.2V9.22H3.47V20.7Zm5.82 0h3.72v-6.4c0-1.69.32-3.32 2.41-3.32 2.06 0 2.09 1.93 2.09 3.43v6.29h3.72v-7.09c0-3.48-.75-6.16-4.82-6.16-1.95 0-3.26 1.07-3.79 2.08h-.05V9.22H9.29V20.7Z"/></svg>
           </a>
-          <a class="social-link" href="#" role="link" aria-disabled="true" tabindex="-1" aria-label="Instagram link pending" title="Instagram link will be added">
+          <a class="social-link" href="https://www.instagram.com/kleingrp_realestate/" target="_blank" rel="noopener noreferrer" aria-label="Klein Group Real Estate on Instagram">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm9.25 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
           </a>
         </div>
@@ -1458,9 +1442,9 @@
         </div>
 
         <div class="location-media">
-          <!-- Documentary photography: aes and Jayson Boesman on Unsplash. -->
-          <img class="image-primary" src="assets/home-new/location-dead-sea.webp" alt="The Dead Sea framed by desert cliffs and distant mountains" loading="lazy" width="1800" height="2700">
-          <img class="image-secondary" src="assets/home-new/location-galilee.webp" alt="Calm water and hills at the Sea of Galilee" loading="lazy" width="1600" height="2395">
+          <!-- Documentary city photography from Pexels. -->
+          <img class="image-primary" src="assets/home-new/location-tel-aviv-city.jpg" alt="Wide aerial view of Tel Aviv's dense cityscape and Mediterranean coast" loading="lazy" width="2000" height="1124">
+          <img class="image-secondary" src="assets/home-new/location-jerusalem-city.jpg" alt="Jerusalem skyline with the Old City and Dome of the Rock" loading="lazy" width="2000" height="1335">
         </div>
       </div>
     </section>
@@ -1515,7 +1499,6 @@
           <p class="eyebrow eyebrow--light">About us</p>
           <h2 class="section-title" id="about-title">Your eyes and ears <em>in Israel.</em></h2>
           <p class="section-copy">Easy Landing was created to give families, buyers, and investors a single trusted point of contact in Israel. David and Rafi combine international understanding with hands-on local experience—so you are never navigating the process alone.</p>
-          <a class="about-link" href="/about.html">Meet the full team →</a>
         </div>
 
         <div class="team-grid">
@@ -1566,6 +1549,7 @@
       <div class="footer-column">
         <h3>Contact</h3>
         <a href="tel:+16468329712">+1 (646) 832-9712</a>
+        <a href="mailto:David@EasyLanding.info">David@EasyLanding.info</a>
         <a href="/contact.html">Free consultation</a>
         <p>Israel · Worldwide support</p>
       </div>
@@ -1577,7 +1561,6 @@
     </div>
   </footer>
 
-  <!-- Current Easy Landing phone is used temporarily for WhatsApp. Replace when the final number arrives. -->
   <a class="whatsapp-button" href="https://wa.me/16468329712" target="_blank" rel="noopener noreferrer" aria-label="Chat with Easy Landing on WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M20.4 11.8a8.4 8.4 0 0 1-12.45 7.36L3.5 20.5l1.37-4.31A8.4 8.4 0 1 1 20.4 11.8Z"/>
@@ -1589,7 +1572,6 @@
     const header = document.getElementById("siteHeader");
     const menuToggle = document.querySelector(".menu-toggle");
     const mobileMenu = document.getElementById("mobileMenu");
-    const pendingSocialLinks = document.querySelectorAll('.social-link[aria-disabled="true"]');
 
     const setHeaderState = () => {
       header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -1618,10 +1600,6 @@
 
     mobileMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", closeMenu);
-    });
-
-    pendingSocialLinks.forEach((link) => {
-      link.addEventListener("click", (event) => event.preventDefault());
     });
 
     document.addEventListener("keydown", (event) => {
