@@ -1,764 +1,1621 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Easy Landing – Home</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: inherit; background: #ffffff; color: #1a2744; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Easy Landing provides premium Aliyah, relocation, real estate, and property management support across Israel.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://easylandingil.com/">
+  <meta name="theme-color" content="#0b1733">
+  <title>Easy Landing | Aliyah, Real Estate &amp; Property Management in Israel</title>
+  <style>
+    @font-face {
+      font-family: "Instrument Sans";
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: url("assets/home-new/instrument-sans.woff2") format("woff2");
+    }
 
-/* ── NAV ── */
-nav {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 28px 60px;
-}
-.nav-logo {
-  font-size: 20px;
-  letter-spacing: 3px;
-  color: #ffffff;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-}
-.nav-links a {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-.nav-links a:hover { color: #ffffff; }
-.nav-cta {
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  padding: 12px 26px;
-  background: #ffffff;
-  color: #1a2744;
-  text-decoration: none;
-  font-weight: 700;
-  transition: all 0.3s;
-}
-.nav-cta:hover { background: rgba(255,255,255,0.88); }
+    @font-face {
+      font-family: "Instrument Serif";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("assets/home-new/instrument-serif.woff2") format("woff2");
+    }
 
-/* ── VIDEO HERO ── */
-.hero {
-  position: relative;
-  height: 100vh;
-  min-height: 600px;
-  overflow: hidden;
-}
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10,18,40,0.95) 0%,
-    rgba(10,18,40,0.5) 50%,
-    rgba(10,18,40,0.25) 100%
-  );
-}
-.hero-text {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  z-index: 5;
-  padding: 0 80px 90px;
-}
-.hero-eyebrow {
-  font-size: 10px;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 22px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.hero-eyebrow::after {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: rgba(255,255,255,0.25);
-}
-.hero-text h1 {
-  font-size: 74px;
-  font-weight: 700;
-  line-height: 1.06;
-  color: #ffffff;
-  margin-bottom: 24px;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.3);
-}
-.hero-text h1 span {
-  display: block;
-  font-size: 60px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.45);
-}
-.hero-sub {
-  font-size: 15px;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.55);
-  max-width: 500px;
-  margin-bottom: 42px;
-}
-.hero-actions { display: flex; gap: 14px; }
-.btn-white {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 17px 44px;
-  background: #ffffff;
-  color: #1a2744;
-  text-decoration: none;
-  font-weight: 700;
-  transition: background 0.3s;
-}
-.btn-white:hover { background: rgba(255,255,255,0.88); }
-.btn-ghost {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 17px 44px;
-  border: 1px solid rgba(255,255,255,0.3);
-  color: rgba(255,255,255,0.75);
-  text-decoration: none;
-  transition: all 0.3s;
-}
-.btn-ghost:hover { border-color: rgba(255,255,255,0.6); color: white; }
+    @font-face {
+      font-family: "Instrument Serif";
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url("assets/home-new/instrument-serif-italic.woff2") format("woff2");
+    }
 
-/* Video play/pause */
-.video-control {
-  position: absolute;
-  bottom: 30px;
-  right: 60px;
-  z-index: 6;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: transparent;
-  color: rgba(255,255,255,0.4);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  transition: all 0.3s;
-}
-.video-control:hover { background: rgba(255,255,255,0.1); color: white; }
+    @font-face {
+      font-family: "Tenor Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("assets/home-new/tenor-sans.woff2") format("woff2");
+    }
 
-/* Scroll hint */
-.scroll-hint {
-  position: absolute;
-  bottom: 32px;
-  left: 80px;
-  z-index: 6;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: rgba(255,255,255,0.25);
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-.scroll-line {
-  width: 40px;
-  height: 1px;
-  background: rgba(255,255,255,0.2);
-  position: relative;
-  overflow: hidden;
-}
-.scroll-line::after {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,255,255,0.6);
-  animation: scrollMove 2s ease-in-out infinite;
-}
-@keyframes scrollMove {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
+    :root {
+      --navy-950: #071126;
+      --navy-900: #0b1733;
+      --navy-800: #122444;
+      --navy-700: #1a3157;
+      --cream: #f6f2e9;
+      --paper: #fffdf8;
+      --ink: #17233a;
+      --muted: #6d7687;
+      --line: rgba(11, 23, 51, 0.14);
+      --white-line: rgba(255, 255, 255, 0.34);
+      --sand: #d3c09a;
+      --green: #177a62;
+      --shadow: 0 22px 70px rgba(7, 17, 38, 0.14);
+      --section-space: clamp(72px, 8vw, 112px);
+    }
 
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
 
-/* ── SERVICES ── */
-.services {
-  padding: 100px 80px;
-  background: #f4f6fb;
-}
-.section-eyebrow {
-  font-size: 10px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: rgba(26,39,68,0.4);
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.section-eyebrow::before {
-  content: '';
-  width: 26px;
-  height: 1px;
-  background: rgba(26,39,68,0.3);
-}
-.services-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 54px;
-}
-.services-top h2 {
-  font-size: 48px;
-  font-weight: 700;
-  color: #1a2744;
-  line-height: 1.15;
-}
-.services-top a {
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: #1a2744;
-  text-decoration: none;
-  opacity: 0.45;
-  border-bottom: 1px solid rgba(26,39,68,0.25);
-  padding-bottom: 4px;
-}
-.service-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.service-card {
-  background: white;
-  overflow: hidden;
-  box-shadow: 0 2px 24px rgba(26,39,68,0.07);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 50px rgba(26,39,68,0.13);
-}
-.card-img {
-  height: 210px;
-  background: #1a2744;
-  overflow: hidden;
-  position: relative;
-}
-.card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.75;
-  transition: opacity 0.3s, transform 0.5s;
-}
-.service-card:hover .card-img img {
-  opacity: 0.9;
-  transform: scale(1.05);
-}
-.card-num {
-  position: absolute;
-  top: 14px;
-  left: 18px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: rgba(255,255,255,0.3);
-}
-.card-body { padding: 30px 28px; }
-.card-body h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1a2744;
-  margin-bottom: 12px;
-}
-.card-body p {
-  font-size: 13px;
-  line-height: 1.85;
-  color: #6a7690;
-  margin-bottom: 22px;
-}
-.card-link {
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: #1a2744;
-  text-decoration: none;
-  font-weight: 700;
-  border-bottom: 1px solid #1a2744;
-  padding-bottom: 3px;
-}
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-/* ── ABOUT ── */
-.about {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 500px;
-}
-.about-left {
-  background: #1a2744;
-  padding: 90px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.about-left .section-eyebrow { color: rgba(255,255,255,0.3); }
-.about-left .section-eyebrow::before { background: rgba(255,255,255,0.2); }
-.about-left h2 {
-  font-size: 44px;
-  font-weight: 700;
-  color: white;
-  line-height: 1.2;
-  margin-bottom: 22px;
-}
-.about-left p {
-  font-size: 14px;
-  line-height: 1.9;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 38px;
-}
-.about-right {
-  background: white;
-  padding: 90px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0;
-}
-.team-member {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  padding: 28px 0;
-  border-bottom: 1px solid #e8edf5;
-}
-.team-member:first-child { padding-top: 0; }
-.team-member:last-child { border-bottom: none; padding-bottom: 0; }
-.team-avatar {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background: #e8edf5;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 2px solid #e8edf5;
-}
-.team-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.team-name {
-  font-size: 17px;
-  font-weight: 700;
-  color: #1a2744;
-  margin-bottom: 5px;
-}
-.team-role {
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #8a96b0;
-  line-height: 1.5;
-}
+    body.menu-open {
+      overflow: hidden;
+    }
 
-/* ── TESTIMONIALS ── */
-.testimonials {
-  padding: 100px 80px;
-  background: #f4f6fb;
-}
-.testimonials-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 54px;
-}
-.testimonials-top h2 {
-  font-size: 46px;
-  font-weight: 700;
-  color: #1a2744;
-}
-.testimonials-top a {
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: #1a2744;
-  text-decoration: none;
-  opacity: 0.45;
-  border-bottom: 1px solid rgba(26,39,68,0.25);
-  padding-bottom: 4px;
-}
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.testimonial-card {
-  background: white;
-  padding: 38px 32px 32px;
-  box-shadow: 0 2px 20px rgba(26,39,68,0.06);
-  position: relative;
-}
-.quote-mark {
-  font-size: 72px;
-  color: #e8edf5;
-  line-height: 1;
-  font-weight: 700;
-  margin-bottom: 8px;
-  display: block;
-}
-.testimonial-text {
-  font-size: 14px;
-  line-height: 1.8;
-  color: #4a5570;
-  margin-bottom: 26px;
-}
-.testimonial-author {
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #1a2744;
-  font-weight: 700;
-}
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
-/* ── CTA BANNER ── */
-.cta-banner {
-  background: #1a2744;
-  padding: 90px 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-}
-.cta-banner h2 {
-  font-size: 44px;
-  font-weight: 700;
-  color: white;
-  line-height: 1.2;
-  max-width: 520px;
-}
-.cta-banner h2 span { color: rgba(255,255,255,0.3); font-weight: 300; }
+    a {
+      color: inherit;
+    }
 
-/* ── FOOTER ── */
-footer {
-  background: #111c33;
-  padding: 64px 80px 36px;
-}
-.footer-top {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 52px;
-  padding-bottom: 52px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-.footer-brand-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: white;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-.footer-brand p {
-  font-size: 13px;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.4);
-  max-width: 260px;
-}
-.footer-col h4 {
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 20px;
-}
-.footer-col a {
-  display: block;
-  font-size: 13px;
-  color: rgba(255,255,255,0.4);
-  text-decoration: none;
-  margin-bottom: 11px;
-  transition: color 0.3s;
-}
-.footer-col a:hover { color: rgba(255,255,255,0.85); }
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: rgba(255,255,255,0.25);
-}
-@media (max-width: 768px) {
-  nav { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
-  .nav-links { display: none; }
-  .nav-logo { font-size: 16px; }
-  .nav-cta { padding: 10px 18px; font-size: 9px; }
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
 
-  /* Hero sections */
-  .hero, .page-hero { min-height: auto !important; grid-template-columns: 1fr !important; }
-  .hero-left, .hero-content { padding: 52px 24px 40px !important; }
-  .hero-left h1, .page-hero h1 { font-size: 38px !important; }
-  .hero-left h1 em { font-size: 32px !important; }
-  .hero-right { display: none !important; }
-  .hero-btns { flex-direction: column; gap: 12px; }
-  .btn-white, .btn-navy, .btn-text { width: 100%; text-align: center; }
+    button {
+      font: inherit;
+    }
 
-  /* Intro strips */
-  .intro-strip, .intro, .promise-strip { grid-template-columns: 1fr !important; }
-  .strip-item, .intro-item, .promise-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 28px 24px !important; }
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 200;
+      padding: 10px 16px;
+      background: #fff;
+      color: var(--navy-950);
+      transform: translateY(-160%);
+      transition: transform 180ms ease;
+    }
 
-  /* Service rows */
-  .service-row, .svc-row { grid-template-columns: 1fr !important; padding: 24px !important; gap: 12px !important; }
-  .sr-num, .svc-icon-lg { display: none; }
+    .skip-link:focus {
+      transform: translateY(0);
+    }
 
-  /* Cards and grids */
-  .cards, .types-grid, .type-grid, .prop-grid, .values-grid, .svc-grid,
-  .testimonial-grid, .process-steps, .process-grid, .team-qualities,
-  .extra-list { grid-template-columns: 1fr !important; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      margin: 0 0 18px;
+      color: var(--navy-700);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
 
-  /* Two-column sections */
-  .intro-strip, .why-israel, .properties-cta, .guarantee, .extras,
-  .prop-left, .story, .team-feature, .cta-banner, .services-links .svc-grid,
-  .why-israel, .intro { grid-template-columns: 1fr !important; flex-direction: column !important; }
+    .eyebrow::before {
+      width: 38px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+      opacity: 0.55;
+    }
 
-  .team-feature { flex-direction: column; }
-  .team-photo { min-height: 280px !important; }
+    .eyebrow--light {
+      color: rgba(255, 255, 255, 0.64);
+    }
 
-  /* Padding fixes */
-  .packages, .services, .process, .testimonials, .invest-types,
-  .prop-types, .extras, .guarantee, .properties-cta, .why-israel,
-  .cta-banner, .services-links, .story, .team, .values, .mission,
-  .how-we-work, .invest-types { padding: 52px 24px !important; margin: 0 !important; }
+    .section-title {
+      max-width: 820px;
+      margin: 0;
+      color: var(--navy-900);
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(2.15rem, 4.8vw, 4.9rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+    }
 
-  footer .footer-top { grid-template-columns: 1fr !important; gap: 32px; }
-  footer { padding: 40px 24px 24px !important; }
+    .section-title em {
+      color: var(--sand);
+      font-weight: 400;
+    }
 
-  /* Text sizing */
-  h1 { font-size: 36px !important; }
-  h2 { font-size: 28px !important; }
-  .cta-banner h2 { font-size: 26px !important; max-width: 100% !important; }
-  .packages-header h2, .services h2, .team h2, .values h2 { font-size: 30px !important; }
+    .section-copy {
+      max-width: 620px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.4vw, 1.16rem);
+    }
 
-  /* Cards full width */
-  .card, .type-card, .prop-card, .value-card, .testimonial-card,
-  .step, .proc-card { width: 100% !important; }
+    .site-header {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 102;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 88px;
+      padding: 18px clamp(22px, 5vw, 76px);
+      color: #fff;
+      transition: background 220ms ease, min-height 220ms ease, box-shadow 220ms ease;
+    }
 
-  /* Properties CTA */
-  .properties-cta { margin: 0 !important; }
-  .prop-left, .prop-right { padding: 40px 24px !important; }
+    .site-header.is-scrolled,
+    body.menu-open .site-header {
+      min-height: 72px;
+      background: rgba(7, 17, 38, 0.94);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(14px);
+    }
 
-  /* Mission */
-  .mission { padding: 40px 24px !important; }
-  .mission blockquote { font-size: 18px !important; }
+    .brand {
+      position: relative;
+      z-index: 102;
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      color: #fff;
+      text-decoration: none;
+    }
 
-  /* Contact form */
-  .main { grid-template-columns: 1fr !important; }
-  .info-panel, .form-panel { padding: 40px 24px !important; }
-  .form-row { grid-template-columns: 1fr !important; }
-}
+    .brand-mark {
+      display: grid;
+      width: 49px;
+      height: 49px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.56);
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.08em;
+    }
 
-</style>
+    .brand-copy {
+      display: grid;
+      gap: 1px;
+      line-height: 1;
+    }
+
+    .brand-name {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 1.18rem;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-tagline {
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.55rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 2.8vw, 42px);
+    }
+
+    .desktop-nav a {
+      position: relative;
+      padding: 9px 0;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .desktop-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: 3px;
+      left: 0;
+      height: 1px;
+      background: #fff;
+      content: "";
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 200ms ease;
+    }
+
+    .desktop-nav a:hover,
+    .desktop-nav a:focus-visible {
+      color: #fff;
+    }
+
+    .desktop-nav a:hover::after,
+    .desktop-nav a:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .desktop-nav .nav-contact {
+      padding: 12px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.44);
+    }
+
+    .desktop-nav .nav-contact::after {
+      display: none;
+    }
+
+    .menu-toggle {
+      position: relative;
+      z-index: 102;
+      display: none;
+      width: 50px;
+      height: 50px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 3px;
+      background: rgba(7, 17, 38, 0.16);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .menu-lines,
+    .menu-lines::before,
+    .menu-lines::after {
+      display: block;
+      width: 25px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-lines::before {
+      transform: translateY(-7px);
+    }
+
+    .menu-lines::after {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-lines {
+      background: transparent;
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-lines::before {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-lines::after {
+      transform: translateY(-1px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 101;
+      display: grid;
+      align-content: center;
+      padding: 110px 32px 45px;
+      background: var(--navy-950);
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+    }
+
+    .mobile-menu.is-open {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-menu nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-menu nav a {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(1.8rem, 8vw, 3rem);
+      line-height: 1.2;
+      text-decoration: none;
+    }
+
+    .mobile-menu-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 26px;
+      margin-top: 42px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 100svh;
+      place-items: center;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--navy-950);
+      color: #fff;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      background: url("assets/home-new/hero.webp") center center / cover no-repeat;
+      content: "";
+      transform: scale(1.015);
+      animation: heroDrift 14s ease-out both;
+    }
+
+    .hero::after {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(7, 17, 38, 0.52), rgba(7, 17, 38, 0.44) 55%, rgba(7, 17, 38, 0.68));
+      content: "";
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(760px, calc(100% - 42px));
+      padding: 150px 0 54px;
+      text-align: center;
+    }
+
+    .hero-kicker {
+      margin: 0 0 17px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: clamp(0.66rem, 1.2vw, 0.78rem);
+      font-weight: 600;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(2.8rem, 7.4vw, 6.9rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      line-height: 0.96;
+      text-indent: 0.12em;
+      text-transform: uppercase;
+      text-shadow: 0 12px 45px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero-subtitle {
+      margin: 19px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: clamp(0.7rem, 1.6vw, 0.94rem);
+      letter-spacing: 0.36em;
+      text-indent: 0.36em;
+      text-transform: uppercase;
+    }
+
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 36px 0;
+    }
+
+    .social-link {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.66);
+      border-radius: 50%;
+      color: #fff;
+      text-decoration: none;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .social-link:hover,
+    .social-link:focus-visible {
+      background: #fff;
+      color: var(--navy-950);
+      transform: translateY(-3px);
+    }
+
+    .social-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .hero-actions {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 18px;
+      width: min(620px, 100%);
+      margin: 0 auto;
+    }
+
+    .call-button {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      min-height: 58px;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: 999px;
+      color: #fff;
+      font-size: clamp(0.78rem, 1.8vw, 1rem);
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-decoration: none;
+      text-transform: uppercase;
+      touch-action: manipulation;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .call-button:hover,
+    .call-button:focus-visible {
+      background: #fff;
+      color: var(--navy-950);
+      transform: translateY(-2px);
+    }
+
+    .call-button svg,
+    .properties-link svg {
+      width: 25px;
+      height: 25px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.8;
+    }
+
+    .properties-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 17px;
+      justify-self: center;
+      color: #fff;
+      font-size: clamp(0.78rem, 1.7vw, 0.98rem);
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .properties-link svg {
+      transition: transform 180ms ease;
+    }
+
+    .properties-link:hover svg,
+    .properties-link:focus-visible svg {
+      transform: translateX(7px);
+    }
+
+    .hero-footnote {
+      position: absolute;
+      right: clamp(22px, 5vw, 76px);
+      bottom: 27px;
+      color: rgba(255, 255, 255, 0.48);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 25px;
+      left: clamp(22px, 5vw, 76px);
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: rgba(255, 255, 255, 0.48);
+      font-size: 0.61rem;
+      letter-spacing: 0.22em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .scroll-cue::before {
+      width: 42px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    .location {
+      position: relative;
+      padding: var(--section-space) clamp(22px, 6vw, 92px);
+      background: var(--paper);
+    }
+
+    .location-grid {
+      display: grid;
+      max-width: 1380px;
+      margin: 0 auto;
+      align-items: center;
+      grid-template-columns: minmax(0, 0.9fr) minmax(480px, 1.1fr);
+      gap: clamp(55px, 8vw, 130px);
+    }
+
+    .location-points {
+      display: grid;
+      margin: 46px 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .location-point {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 17px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .location-point span {
+      color: var(--sand);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+
+    .location-point strong {
+      color: var(--navy-900);
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .location-media {
+      position: relative;
+      min-height: 500px;
+    }
+
+    .location-media .image-primary {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 72%;
+      object-fit: cover;
+      object-position: center 70%;
+      box-shadow: 0 16px 44px rgba(7, 17, 38, 0.1);
+    }
+
+    .location-media .image-secondary {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 56%;
+      height: 40%;
+      object-fit: cover;
+      object-position: center 58%;
+      border: 8px solid var(--paper);
+      box-shadow: 0 10px 30px rgba(7, 17, 38, 0.1);
+    }
+
+    .services {
+      padding: var(--section-space) clamp(22px, 6vw, 92px);
+      background: var(--cream);
+    }
+
+    .section-heading-row {
+      display: flex;
+      max-width: 1380px;
+      margin: 0 auto 58px;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .service-grid {
+      display: grid;
+      max-width: 1380px;
+      margin: 0 auto;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(18px, 2.6vw, 38px);
+    }
+
+    .service-card {
+      position: relative;
+      min-width: 0;
+      background: var(--paper);
+      box-shadow: 0 12px 45px rgba(7, 17, 38, 0.07);
+      overflow: hidden;
+    }
+
+    .service-card-image {
+      position: relative;
+      height: clamp(280px, 32vw, 450px);
+      overflow: hidden;
+    }
+
+    .service-card-image::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(7, 17, 38, 0.62));
+      content: "";
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .service-number {
+      position: absolute;
+      right: 22px;
+      bottom: 16px;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.84);
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 2.5rem;
+    }
+
+    .service-card-body {
+      padding: 30px clamp(22px, 2.5vw, 38px) 36px;
+    }
+
+    .service-card h3 {
+      margin: 0;
+      color: var(--navy-900);
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(1.4rem, 2vw, 1.95rem);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    .service-card p {
+      min-height: 78px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .about {
+      padding: var(--section-space) clamp(22px, 6vw, 92px);
+      background: var(--navy-900);
+      color: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      max-width: 1380px;
+      margin: 0 auto;
+      grid-template-columns: minmax(320px, 0.75fr) minmax(0, 1.25fr);
+      gap: clamp(55px, 8vw, 125px);
+    }
+
+    .about .section-title {
+      color: #fff;
+    }
+
+    .about .section-copy {
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(18px, 2.5vw, 34px);
+    }
+
+    .team-card {
+      position: relative;
+      min-height: 540px;
+      overflow: hidden;
+      background: var(--navy-800);
+    }
+
+    .team-card::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 46%, rgba(7, 17, 38, 0.94));
+      content: "";
+    }
+
+    .team-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .team-card-copy {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      padding: 26px;
+    }
+
+    .team-card h3 {
+      margin: 0 0 5px;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(1.35rem, 2vw, 1.95rem);
+      font-weight: 400;
+    }
+
+    .team-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      line-height: 1.65;
+      text-transform: uppercase;
+    }
+
+    .closing-cta {
+      position: relative;
+      display: grid;
+      min-height: 590px;
+      padding: 80px clamp(22px, 6vw, 92px);
+      place-items: center;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--navy-950);
+      color: #fff;
+      text-align: center;
+    }
+
+    .closing-cta::before {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: url("assets/home-new/cta.webp") center center / cover no-repeat;
+      content: "";
+    }
+
+    .closing-cta::after {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba(7, 17, 38, 0.76);
+      content: "";
+    }
+
+    .closing-cta h2 {
+      max-width: 820px;
+      margin: 0 auto 24px;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(2.2rem, 5.2vw, 5rem);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
+    }
+
+    .closing-cta p {
+      max-width: 620px;
+      margin: 0 auto 36px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: clamp(0.95rem, 1.5vw, 1.12rem);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      min-height: 58px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 35px;
+      background: #fff;
+      color: var(--navy-950);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .cta-button:hover,
+    .cta-button:focus-visible {
+      background: var(--sand);
+      color: var(--navy-950);
+      transform: translateY(-2px);
+    }
+
+    .site-footer {
+      padding: 66px clamp(22px, 6vw, 92px) 28px;
+      background: var(--navy-950);
+      color: #fff;
+    }
+
+    .footer-grid {
+      display: grid;
+      max-width: 1380px;
+      margin: 0 auto;
+      grid-template-columns: minmax(260px, 1.4fr) repeat(2, minmax(160px, 0.7fr));
+      gap: 54px;
+    }
+
+    .footer-brand {
+      max-width: 410px;
+    }
+
+    .footer-brand h2 {
+      margin: 0 0 15px;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    .footer-brand p,
+    .footer-column a,
+    .footer-column p {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.86rem;
+    }
+
+    .footer-column h3 {
+      margin: 0 0 19px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .footer-column a {
+      display: block;
+      width: fit-content;
+      margin: 8px 0;
+      text-decoration: none;
+    }
+
+    .footer-column a:hover,
+    .footer-column a:focus-visible {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      display: flex;
+      max-width: 1380px;
+      margin: 52px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      color: rgba(255, 255, 255, 0.36);
+      font-size: 0.66rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      right: clamp(18px, 3vw, 38px);
+      bottom: clamp(18px, 3vw, 38px);
+      z-index: 90;
+      display: grid;
+      width: 64px;
+      height: 64px;
+      place-items: center;
+      border: 2px solid rgba(255, 255, 255, 0.72);
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      box-shadow: 0 14px 36px rgba(7, 17, 38, 0.28);
+      text-decoration: none;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .whatsapp-button:hover,
+    .whatsapp-button:focus-visible {
+      background: #0d6b55;
+      transform: translateY(-4px);
+    }
+
+    .whatsapp-button svg {
+      width: 31px;
+      height: 31px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.8;
+    }
+
+    .hero h1,
+    .section-title,
+    .service-card h3,
+    .team-card h3,
+    .closing-cta h2,
+    .footer-brand h2,
+    .footer-column h3 {
+      font-family: "Tenor Sans", "Instrument Sans", Arial, sans-serif;
+      font-weight: 400;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--sand);
+      outline-offset: 4px;
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.06); }
+      to { transform: scale(1.015); }
+    }
+
+    @media (min-width: 1041px) {
+      .site-header {
+        min-height: 56px;
+        justify-content: center;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .site-header.is-scrolled {
+        min-height: 60px;
+      }
+
+      .site-header .brand {
+        display: none;
+      }
+
+      .desktop-nav {
+        justify-content: center;
+      }
+
+      .desktop-nav .nav-contact {
+        padding: 9px 0;
+        border: 0;
+      }
+
+      .hero-content {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        padding: 0;
+        text-align: left;
+      }
+
+      .hero-branding {
+        position: absolute;
+        top: 35%;
+        left: clamp(42px, 6vw, 92px);
+        transform: translateY(-50%);
+      }
+
+      .hero-kicker {
+        display: none;
+      }
+
+      .hero h1 {
+        max-width: 600px;
+        font-size: clamp(2.3rem, 3.6vw, 4rem);
+        letter-spacing: 0.09em;
+        line-height: 1;
+        text-indent: 0;
+      }
+
+      .hero-subtitle {
+        margin-top: 13px;
+        font-size: clamp(0.68rem, 1vw, 0.86rem);
+        letter-spacing: 0.3em;
+        text-indent: 0;
+      }
+
+      .social-row {
+        position: absolute;
+        bottom: clamp(42px, 8vh, 56px);
+        left: clamp(28px, 5vw, 76px);
+        justify-content: flex-start;
+        gap: 16px;
+        margin: 0;
+      }
+
+      .social-link {
+        width: 36px;
+        height: 36px;
+      }
+
+      .social-link svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      .hero-actions {
+        position: absolute;
+        right: clamp(105px, 8vw, 160px);
+        bottom: clamp(42px, 8vh, 56px);
+        left: 52%;
+        display: flex;
+        width: auto;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        margin: 0;
+      }
+
+      .call-button {
+        min-height: 42px;
+        padding: 0 22px;
+        font-size: 0.68rem;
+      }
+
+      .properties-link {
+        font-size: 0.68rem;
+      }
+
+      .scroll-cue,
+      .hero-footnote {
+        display: none;
+      }
+
+      .whatsapp-button {
+        right: 18px;
+        bottom: 16px;
+        width: 50px;
+        height: 50px;
+      }
+
+      .whatsapp-button svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    @media (max-width: 1040px) {
+      .brand-copy {
+        display: none;
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .location-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-grid {
+        gap: 66px;
+      }
+
+      .location-copy {
+        max-width: 760px;
+      }
+
+      .location-media {
+        width: min(800px, 100%);
+        min-height: clamp(420px, 55vw, 520px);
+        margin: 0 auto;
+      }
+
+      .about-grid {
+        gap: 58px;
+      }
+
+      .about-copy {
+        max-width: 760px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .site-header {
+        min-height: 78px;
+      }
+
+      .location-media {
+        order: -1;
+      }
+
+      .brand-copy {
+        display: none;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+
+      .hero-content {
+        padding-top: 128px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 10.8vw, 4.4rem);
+        letter-spacing: 0.08em;
+        text-indent: 0.08em;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        display: grid;
+        grid-template-columns: minmax(250px, 0.95fr) 1fr;
+      }
+
+      .service-card-image {
+        height: 100%;
+        min-height: 340px;
+      }
+
+      .service-card p {
+        min-height: 0;
+      }
+
+      .section-heading-row {
+        display: grid;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      :root {
+        --section-space: 64px;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        font-size: 1.18rem;
+      }
+
+      .menu-toggle {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero::before {
+        background-position: 51% center;
+      }
+
+      .hero::after {
+        background: rgba(7, 17, 38, 0.6);
+      }
+
+      .hero-content {
+        width: min(100% - 34px, 520px);
+        padding-top: 118px;
+      }
+
+      .hero-kicker {
+        margin-bottom: 14px;
+        letter-spacing: 0.31em;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.95rem, 9vw, 2.65rem);
+        letter-spacing: 0.12em;
+        line-height: 1.08;
+        text-indent: 0.12em;
+        white-space: nowrap;
+      }
+
+      .hero-subtitle {
+        margin-top: 13px;
+        letter-spacing: 0.26em;
+        text-indent: 0.26em;
+      }
+
+      .social-row {
+        gap: 24px;
+        margin: 34px 0 36px;
+      }
+
+      .social-link {
+        width: 44px;
+        height: 44px;
+      }
+
+      .hero-actions {
+        gap: 20px;
+      }
+
+      .call-button {
+        width: 180px;
+        min-height: 54px;
+        margin-inline: auto;
+        letter-spacing: 0.25em;
+      }
+
+      .properties-link {
+        letter-spacing: 0.25em;
+      }
+
+      .hero-footnote,
+      .scroll-cue {
+        display: none;
+      }
+
+      .section-title {
+        font-size: clamp(2.05rem, 10.5vw, 3.4rem);
+      }
+
+      .location-media {
+        min-height: clamp(280px, 72vw, 370px);
+      }
+
+      .location-media .image-primary {
+        width: 100%;
+        height: 70%;
+      }
+
+      .location-media .image-secondary {
+        width: 58%;
+        height: 40%;
+        border-width: 6px;
+      }
+
+      .service-card {
+        display: block;
+      }
+
+      .service-card-image {
+        height: 350px;
+        min-height: 0;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-card {
+        height: clamp(390px, 112vw, 430px);
+        min-height: 0;
+      }
+
+      .closing-cta {
+        min-height: 540px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .footer-bottom {
+        display: grid;
+      }
+
+      .whatsapp-button {
+        width: 58px;
+        height: 58px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Easy Landing</div>
-  <ul class="nav-links">
-    <li><a href="/aliyah-services.html">Aliyah & Relocation</a></li>
-    <li><a href="/real-estate.html">Real Estate</a></li>
-    <li><a href="/property-management.html">Property Management</a></li>
-    <li><a href="/about.html">About</a></li>
-    <li><a href="/aliyah-services.html">Testimonials</a></li>
-  </ul>
-  <a href="/contact.html" class="nav-cta">Free Consultation</a>
-</nav>
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="/" aria-label="Easy Landing homepage">
+      <span class="brand-mark" aria-hidden="true">EL</span>
+      <span class="brand-copy">
+        <span class="brand-name">Easy Landing</span>
+        <span class="brand-tagline">Your bridge to Israel</span>
+      </span>
+    </a>
 
-<!-- VIDEO HERO -->
-<section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
-    <source src="https://easylandingil.com/wp-content/uploads/2022/08/EL-GideonEdits4.mov" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
-  <div class="hero-text">
-    <div class="hero-eyebrow">Concierge Services · Israel</div>
-    <h1>
-      <span>The Bridge Between</span>
-      The World & Israel.
-    </h1>
-    <p class="hero-sub">Easy Landing provides premium concierge bureaucracy services in Israel. We turn problems into solutions — for Aliyah and beyond.</p>
-    <div class="hero-actions">
-      <a href="/contact.html" class="btn-white">Begin Your Journey</a>
-      <a href="/aliyah-services.html" class="btn-ghost">Our Services</a>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
-  <button class="video-control" onclick="toggleVideo()" id="videoBtn">⏸</button>
-</section>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#location">Prime Location</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="https://kleingrp.com/properties/" target="_blank" rel="noopener noreferrer">Properties</a>
+      <a class="nav-contact" href="/contact.html">Contact</a>
+    </nav>
 
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+      <span class="menu-lines" aria-hidden="true"></span>
+    </button>
+  </header>
 
-
-<!-- SERVICES -->
-<section class="services">
-  <div class="services-top">
-    <div>
-      <div class="section-eyebrow">What We Do</div>
-      <h2>Our Services</h2>
-    </div>
-    <a href="/aliyah-services.html">View All →</a>
-  </div>
-  <div class="service-cards">
-    <div class="service-card">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1609234656432-603f42cf14a9?w=800https://easylandingil.com/wp-content/uploads/2022/08/AdobeStock_69957207-scaled-e1659933953879.jpegq=80" alt="Aliyah Services">
-        <div class="card-num">01</div>
-      </div>
-      <div class="card-body">
-        <h3>Aliyah & Relocation</h3>
-        <p>Experience a seamless Aliyah process with comprehensive support at every step. Trust, honesty, and excellent service from start to finish.</p>
-        <a href="/aliyah-services.html" class="card-link">Read More</a>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800https://easylandingil.com/wp-content/uploads/2022/08/AdobeStock_220676674-scaled.jpegq=80" alt="Real Estate">
-        <div class="card-num">02</div>
-      </div>
-      <div class="card-body">
-        <h3>Real Estate Investment</h3>
-        <p>From dream homes to investment apartments — we guide you through Israel's property market with insider expertise and white-glove service.</p>
-        <a href="/real-estate.html" class="card-link">View Properties</a>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800https://easylandingil.com/wp-content/uploads/2022/08/AdobeStock_335776411-scaled.jpegq=80" alt="Property Management">
-        <div class="card-num">03</div>
-      </div>
-      <div class="card-body">
-        <h3>Property Management</h3>
-        <p>We care for your property as if it were our own — complete management services backed by our personal guarantee of quality.</p>
-        <a href="/property-management.html" class="card-link">Learn More</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT / TEAM -->
-<section class="about">
-  <div class="about-left">
-    <div class="section-eyebrow">Our Team</div>
-    <h2>Your Eyes & Ears on the Ground</h2>
-    <p>We know from personal experience how time-consuming Israeli bureaucracy can be. We provide exclusive, high-end guidance to best meet your requirements with trustworthy customer support — whether you're making Aliyah or investing in Israeli real estate.</p>
-    <a href="/about.html" class="btn-white" style="display:inline-block;width:fit-content;">Meet the Team</a>
-  </div>
-  <div class="about-right">
-    <div class="team-member">
-      <div class="team-avatar">
-        <img src="https://easylandingil.com/wp-content/uploads/2021/05/gfsgs.jpg" alt="David Hozainov">
-      </div>
-      <div>
-        <div class="team-name">David Hozainov</div>
-        <div class="team-role">Managing Director</div>
-      </div>
-    </div>
-    <div class="team-member">
-      <div class="team-avatar">
-        <img src="https://easylandingil.com/wp-content/uploads/2025/10/2680B8F0-0FC4-48A7-8363-39F0BBA0BD7B-2.jpeg" alt="Rafi Klein">
-      </div>
-      <div>
-        <div class="team-name">Rafi Klein</div>
-        <div class="team-role">Founder, The Klein Group<br>Director of Operations (IL)</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="testimonials-top">
-    <div>
-      <div class="section-eyebrow">Client Stories</div>
-      <h2>Words from Our Clients</h2>
-    </div>
-    <a href="/aliyah-services.html">Read All Testimonials →</a>
-  </div>
-  <div class="testimonial-grid">
-    <div class="testimonial-card">
-      <span class="quote-mark">"</span>
-      <p class="testimonial-text">My experience with David and Gideon of Easy Landing was flawless! They arranged the necessary appointment, met me at the site, advocated effectively, and guided me through the entire process.</p>
-      <div class="testimonial-author">Mark Friedman · Forest Hills, NY</div>
-    </div>
-    <div class="testimonial-card">
-      <span class="quote-mark">"</span>
-      <p class="testimonial-text">Words cannot express how easy your company made our Aliyah process. From the moment we met, you came through on even more than what you offered my family.</p>
-      <div class="testimonial-author">David Dweck · Director, Camp Allsport</div>
-    </div>
-    <div class="testimonial-card">
-      <span class="quote-mark">"</span>
-      <p class="testimonial-text">Thanks so much — everything is perfect. You and Gideon have been great, and we have told all our friends how helpful you have both been. See you in Israel soon!</p>
-      <div class="testimonial-author">Alan Weichselbaum · New Rochelle, NY</div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<section class="cta-banner">
-  <h2>Ready to Start Your <span>Israeli Journey?</span></h2>
-  <a href="/contact.html" class="btn-white">Get a Free Consultation</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-brand-name">Easy Landing</div>
-      <p>Concierge bureaucracy services in Israel. Turning problems into solutions for Aliyah and beyond.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <a href="/aliyah-services.html">Aliyah & Relocation</a>
-      <a href="/real-estate.html">Real Estate</a>
-      <a href="/property-management.html">Property Management</a>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <a href="/about.html">About</a>
-      <a href="/aliyah-services.html">Testimonials</a>
-      <a href="https://easylandingil.com/blog/">News</a>
+  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href="#location">Prime Location</a>
+      <a href="#services">Our Services</a>
+      <a href="#about">About Us</a>
+      <a href="https://kleingrp.com/properties/" target="_blank" rel="noopener noreferrer">Properties</a>
       <a href="/contact.html">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact Us</h4>
+    </nav>
+    <div class="mobile-menu-meta">
       <a href="tel:+16468329712">+1 (646) 832-9712</a>
       <a href="mailto:david@easylandingil.com">david@easylandingil.com</a>
+      <span>Israel · Worldwide support</span>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2024 Easy Landing LLC. All rights reserved.</span>
-    <span>Website by BROEKMAN communications</span>
-  </div>
-</footer>
+  </aside>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-let playing = true;
-function toggleVideo() {
-  c
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-branding">
+          <p class="hero-kicker">A softer arrival. A stronger start.</p>
+          <h1 id="hero-title">Easy Landing</h1>
+          <p class="hero-subtitle">Concierge services · Israel</p>
+        </div>
+
+        <div class="social-row" aria-label="Social media">
+          <a class="social-link" href="https://www.facebook.com/profile.php?id=61584210298706" target="_blank" rel="noopener noreferrer" aria-label="Klein Group on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 22v-9h3l.45-3.5H13.7V7.27c0-1.01.28-1.7 1.73-1.7h1.85V2.44a25 25 0 0 0-2.7-.14c-2.67 0-4.5 1.63-4.5 4.63V9.5H7.05V13h3.03v9h3.62Z"/></svg>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/davidhozainov/" target="_blank" rel="noopener noreferrer" aria-label="David Hozainov on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.34 7.65A2.17 2.17 0 1 0 5.33 3.3a2.17 2.17 0 0 0 0 4.34ZM3.47 20.7H7.2V9.22H3.47V20.7Zm5.82 0h3.72v-6.4c0-1.69.32-3.32 2.41-3.32 2.06 0 2.09 1.93 2.09 3.43v6.29h3.72v-7.09c0-3.48-.75-6.16-4.82-6.16-1.95 0-3.26 1.07-3.79 2.08h-.05V9.22H9.29V20.7Z"/></svg>
+          </a>
+          <a class="social-link" href="https://www.instagram.com/kleingrp_realestate/" target="_blank" rel="noopener noreferrer" aria-label="Klein Group Real Estate on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm9.25 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-actions">
+          <a class="call-button" href="tel:+16468329712" aria-label="Call Easy Landing at +1 646 832 9712" title="Call +1 (646) 832-9712">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.7 9.4 8l-2.1 1.8c.8 2.5 2.4 4.5 4.9 5.8l2.1-2 4.1 2.6-.9 3.5c-.2.7-.9 1.2-1.7 1.2C9 20.3 3.7 15 3.1 8.2c-.1-.8.4-1.5 1.1-1.8l2.9-2.7Z"/></svg>
+            <span>Call Now</span>
+          </a>
+          <a class="properties-link" href="https://kleingrp.com/properties/" target="_blank" rel="noopener noreferrer">
+            <span>Properties</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#location">Discover</a>
+      <span class="hero-footnote">Israel · Since 2018</span>
+    </section>
+
+    <section class="location" id="location" aria-labelledby="location-title">
+      <div class="location-grid">
+        <div class="location-copy">
+          <p class="eyebrow">Prime location</p>
+          <h2 class="section-title" id="location-title">Your interests, protected <em>on the ground.</em></h2>
+          <p class="section-copy">From Tel Aviv's coastline to communities across Israel, Easy Landing gives international clients a trusted local presence. We coordinate the details, represent your interests, and keep every next step clear.</p>
+          <div class="location-points" aria-label="Areas served">
+            <div class="location-point"><span>01</span><strong>Tel Aviv & Central Israel</strong></div>
+            <div class="location-point"><span>02</span><strong>Jerusalem & Surrounding Areas</strong></div>
+            <div class="location-point"><span>03</span><strong>Worldwide Client Support</strong></div>
+          </div>
+        </div>
+
+        <div class="location-media">
+          <!-- Ramat Gan photo by Someone35, CC BY-SA 3.0, cropped. Source: https://commons.wikimedia.org/wiki/File:View_Of_Ramat_Gan_Diamond_Exchange_District.jpg -->
+          <img class="image-primary" src="assets/home-new/location-tel-aviv-city.jpg" alt="Wide aerial view of Tel Aviv's dense cityscape and Mediterranean coast" loading="lazy" width="2000" height="1124">
+          <img class="image-secondary" src="assets/home-new/location-ramat-gan-city.jpg" alt="Ramat Gan Diamond Exchange District and surrounding city skyline" loading="lazy" width="869" height="652">
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">What we do</p>
+          <h2 class="section-title" id="services-title">A seamless journey, <em>start to finish.</em></h2>
+        </div>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-card-image">
+            <img src="assets/home-new/hero.webp" alt="Aerial view of Tel Aviv's Mediterranean coastline" loading="lazy" width="1920" height="1080">
+            <span class="service-number">01</span>
+          </div>
+          <div class="service-card-body">
+            <h3>Aliyah & Relocation</h3>
+            <p>Personal, end-to-end support for bureaucracy, banking, healthcare, schools, and the practical details of building your life in Israel.</p>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card-image">
+            <img src="assets/home-new/service-1.webp" alt="Modern residential property in Israel" loading="lazy" width="1180" height="1180">
+            <span class="service-number">02</span>
+          </div>
+          <div class="service-card-body">
+            <h3>Real Estate</h3>
+            <p>Trusted local guidance for buyers and investors, with access to carefully selected opportunities through our Klein Group partnership.</p>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card-image">
+            <img src="assets/home-new/service-2.webp" alt="Premium apartment building in Israel" loading="lazy" width="1024" height="819">
+            <span class="service-number">03</span>
+          </div>
+          <div class="service-card-body">
+            <h3>Property Management</h3>
+            <p>Hands-off ownership with responsive maintenance, tenant coordination, transparent reporting, and someone you trust always nearby.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="eyebrow eyebrow--light">About us</p>
+          <h2 class="section-title" id="about-title">Your eyes and ears <em>in Israel.</em></h2>
+          <p class="section-copy">Easy Landing was created to give families, buyers, and investors a single trusted point of contact in Israel. David and Rafi combine international understanding with hands-on local experience—so you are never navigating the process alone.</p>
+        </div>
+
+        <div class="team-grid">
+          <article class="team-card">
+            <img src="assets/home-new/team-2.jpeg" alt="Rafi Klein" loading="lazy" width="1079" height="1600">
+            <div class="team-card-copy">
+              <h3>Rafi Klein</h3>
+              <p>Founder, The Klein Group<br>Director of Operations (IL)</p>
+            </div>
+          </article>
+
+          <article class="team-card">
+            <img src="assets/home-new/team-1.jpeg" alt="David Hozainov" loading="lazy" width="640" height="750">
+            <div class="team-card-copy">
+              <h3>David Hozainov</h3>
+              <p>Managing Director & Founder</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-cta" aria-labelledby="cta-title">
+      <div>
+        <p class="eyebrow eyebrow--light">Your journey starts here</p>
+        <h2 id="cta-title">Make Israel feel closer.</h2>
+        <p>Tell us what you need. We will coordinate the details and create a clear, personal path forward.</p>
+        <a class="cta-button" href="/contact.html">Book a free consultation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>Easy Landing</h2>
+        <p>Concierge bureaucracy services in Israel. Turning problems into solutions for Aliyah, relocation, real estate, and beyond.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Explore</h3>
+        <a href="/aliyah-services.html">Aliyah & Relocation</a>
+        <a href="https://kleingrp.com/properties/" target="_blank" rel="noopener noreferrer">Properties</a>
+        <a href="/property-management.html">Property Management</a>
+        <a href="/about.html">About Us</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <a href="tel:+16468329712">+1 (646) 832-9712</a>
+        <a href="mailto:david@easylandingil.com">david@easylandingil.com</a>
+        <a href="/contact.html">Free consultation</a>
+        <p>Israel · Worldwide support</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Easy Landing LLC. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <a class="whatsapp-button" href="https://wa.me/16468329712" target="_blank" rel="noopener noreferrer" aria-label="Chat with Easy Landing on WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.4 11.8a8.4 8.4 0 0 1-12.45 7.36L3.5 20.5l1.37-4.31A8.4 8.4 0 1 1 20.4 11.8Z"/>
+      <path d="M8.2 7.65c.23-.23.55-.22.76.02l1.12 1.43c.17.21.17.5.01.72l-.63.85c.69 1.4 1.82 2.52 3.22 3.2l.84-.62c.22-.16.51-.16.72.01l1.44 1.12c.24.2.25.53.02.76l-.72.72c-.48.48-1.19.66-1.83.45a9.37 9.37 0 0 1-5.47-5.48c-.21-.64-.04-1.35.44-1.83l.08-.08Z"/>
+    </svg>
+  </a>
+
+  <script>
+    const header = document.getElementById("siteHeader");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    const setHeaderState = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 24);
+    };
+
+    const closeMenu = () => {
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open menu");
+      mobileMenu.classList.remove("is-open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
+    };
+
+    const openMenu = () => {
+      menuToggle.setAttribute("aria-expanded", "true");
+      menuToggle.setAttribute("aria-label", "Close menu");
+      mobileMenu.classList.add("is-open");
+      mobileMenu.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
+    };
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    window.addEventListener("scroll", setHeaderState, { passive: true });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1040) closeMenu();
+    });
+    setHeaderState();
+  </script>
+</body>
+</html>
